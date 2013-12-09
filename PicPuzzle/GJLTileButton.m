@@ -38,8 +38,8 @@
     [self.superview bringSubviewToFront:self];
     [self setNeedsDisplay];
 }
-*/
 
+*/
 + (id) button
 {
     GJLTileButton *button = [GJLTileButton buttonWithType:UIButtonTypeCustom];

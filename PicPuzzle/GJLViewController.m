@@ -83,17 +83,19 @@
     
     
     //update positions with new values
-    _storedLocations[indexToMoveTo]= [NSValue valueWithCGPoint:currentBlankPosition];
-    _storedLocations[indexOfBlank]= [NSValue valueWithCGPoint:updatedBlankPosition];
+    _storedLocations[indexToMoveTo]= [NSValue valueWithCGPoint:updatedBlankPosition];
+    _storedLocations[indexOfBlank]= [NSValue valueWithCGPoint:currentBlankPosition];
     //need to move blank tile to new position
-    UIView *tempButton = [self.view viewWithTag:16];
-
-    tempButton.center=updatedBlankPosition;
+    UIView *blankTile = [self.view viewWithTag:16];
+    blankTile.center=updatedBlankPosition;
     
     //move the current tile to blank location
     aButton.center=currentBlankPosition;
+//    NSLog(@"aButton layer: %f, blankTile layer: %f",aButton.layer.zPosition, blankTile.layer.zPosition);
     [aButton setContentMode:UIViewContentModeRedraw];
     
+    [aButton setNeedsDisplay];
+    [blankTile setNeedsDisplay];
     
     //swap around tileGridLocation names
     
@@ -171,8 +173,8 @@
         positionY = yUnits*rowNumber;
 //        NSLog(@"result: %d i: %d xPosition: %f yPosition: %f \n",result, i,positionX, positionY);
 
-        UIImage *imageToUse = [UIImage imageNamed:fileName];
-        UIImageView *imageView = [[UIImageView alloc]initWithImage:imageToUse];
+//        UIImage *imageToUse = [UIImage imageNamed:fileName];
+//        UIImageView *imageView = [[UIImageView alloc]initWithImage:imageToUse];
         
         GJLTileButton *individualTile = [GJLTileButton button];
         [individualTile setBackgroundImage:toLoad forState:UIControlStateNormal];
@@ -180,7 +182,7 @@
         individualTile.adjustsImageWhenHighlighted=YES; //hack2
 
         individualTile.titleLabel.font = [UIFont boldSystemFontOfSize:12.0f];
-        CGPoint positionOfFrame = CGPointMake(positionX,positionY);
+//        CGPoint positionOfFrame = CGPointMake(positionX,positionY);
         individualTile.center = CGPointMake(positionX,positionY);
         individualTile.tileName=[locationArray objectAtIndex:(i)];
         [_whereInGrid addObject:[locationArray objectAtIndex:(i)]];
@@ -188,9 +190,10 @@
         [_storedLocations addObject:[NSValue valueWithCGPoint:individualTile.center]];
         individualTile.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 		
-        [imageView setCenter:positionOfFrame];
+//        [imageView setCenter:positionOfFrame];
         
-        imageView.userInteractionEnabled=YES;
+//        imageView.userInteractionEnabled=YES;
+        individualTile.userInteractionEnabled=YES;
         [individualTile addTarget:self action:@selector(pushed:) forControlEvents: UIControlEventTouchUpInside];
         [self.view addSubview:individualTile];
 
