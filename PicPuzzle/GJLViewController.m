@@ -20,44 +20,92 @@
 - (void) pushed: (GJLTileButton *) aButton
 {
 
-    // search through tiles to file blank tile
+    // find index of blank tile
+    NSUInteger indexOfBlank = [_whereInGrid indexOfObject:@"blank"]; //finds where in _whereInGrid the blank tile is
+//    int tagOfButton = aButton.tag;
+
+    NSString *tempString = aButton.tileName;
+//    _whereInGrid[tagOfButton-1];
+    NSUInteger indexToMoveTo = [_whereInGrid indexOfObject:tempString];
+    if (indexOfBlank == indexToMoveTo)
+        return; //clicked on blank tile
     
-    //check to see if the tile is next to current tile
+    //update to handle starting from one rather than zero
+    indexOfBlank++;
+    indexToMoveTo++;
+    
+    BOOL sameColumn = false;
+//    BOOL adjacentNumbers= false;
+    BOOL fourDifferent = false;
+    BOOL leftEdge = false;
+    BOOL rightEdge = false;
+    
+    BOOL canMove = false;
     
     //check to see if tile can be moved in this location
+    if ((indexOfBlank%4)==(indexToMoveTo%4))
+        sameColumn = true;
+    if ((indexOfBlank+4==indexToMoveTo) || (indexToMoveTo+4==indexOfBlank))
+        fourDifferent = true; //this is a valid move up or down
+
+    if((fourDifferent)&(sameColumn))
+        canMove=true;
+    
+/*    if ((indexToMoveTo==indexOfBlank+1) || (indexToMoveTo+1==indexOfBlank))
+        adjacentNumbers = true;
+*/
+    if ((indexOfBlank%4)==1)
+        leftEdge=true;
+    if ((indexOfBlank%4)==0)
+        rightEdge=true;
+        
+    if ((indexToMoveTo==indexOfBlank+1) && (!rightEdge))
+        canMove=true;
+
+    if ((indexToMoveTo==indexOfBlank-1) && (!leftEdge))
+        canMove=true;
+    
+    if(!canMove)
+        return;
+    
+    indexToMoveTo--;
+    indexOfBlank--;
+    
     
     //move tile
-    int tagOfButton = aButton.tag;
-    NSValue *tempValue = [_storedLocations objectAtIndex:(15)];
+    NSValue *tempValue = [_storedLocations objectAtIndex:(indexOfBlank)];
     CGPoint currentBlankPosition = [tempValue CGPointValue];
-
-//    CGPoint currentBlankPosition = CGPointMake(*(_blankTileLocationX), *(_blankTileLocationY));
     CGPoint updatedBlankPosition = aButton.center;
     
     
-    NSLog(@"blank x %f, y %f\n", currentBlankPosition.x, currentBlankPosition.y);
-    NSLog(@"updated x %f, y %f\n", updatedBlankPosition.x, updatedBlankPosition.y);
-    
-    _storedLocations[tagOfButton-1]= [NSValue valueWithCGPoint:currentBlankPosition];
-    _storedLocations[15]= [NSValue valueWithCGPoint:updatedBlankPosition];
-    
-    aButton.center=currentBlankPosition;
+//    NSLog(@"blank x %f, y %f\n", currentBlankPosition.x, currentBlankPosition.y);
+//    NSLog(@"updated x %f, y %f\n", updatedBlankPosition.x, updatedBlankPosition.y);
     
     
+    //update positions with new values
+    _storedLocations[indexToMoveTo]= [NSValue valueWithCGPoint:currentBlankPosition];
+    _storedLocations[indexOfBlank]= [NSValue valueWithCGPoint:updatedBlankPosition];
     //need to move blank tile to new position
-    
     UIView *tempButton = [self.view viewWithTag:16];
+
     tempButton.center=updatedBlankPosition;
-//    _blankTileLocationX = &thePoint.x;
-//    _blankTileLocationY = &thePoint.y;
     
-    //else do nothing
+    //move the current tile to blank location
+    aButton.center=currentBlankPosition;
+    [aButton setContentMode:UIViewContentModeRedraw];
     
+    
+    //swap around tileGridLocation names
+    
+    _whereInGrid[indexToMoveTo] = @"blank";
+    _whereInGrid[indexOfBlank] = tempString;
+
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
 	// Do any additional setup after loading the view, typically from a nib.
     NSInteger numberInGrid = 4;
     NSInteger numberOfTiles = numberInGrid*numberInGrid; // number of tiles to add
@@ -98,7 +146,7 @@
                            @"location13",
                            @"location14",
                            @"location15",
-                           @"location16"];
+                           @"blank"];
     
 
 
@@ -107,13 +155,14 @@
     int rowNumber=0;
     
     
-    
+    _whereInGrid = [[NSMutableArray alloc] init];
     _storedLocations = [[NSMutableArray alloc] init];
 
-	for (int i = 0; i < (numberOfTiles); i++)
+	for (NSInteger i = 0; i < (numberOfTiles); i++)
 	{
 		NSString *whichTile = [tileArray objectAtIndex:(i)];
         NSString *fileName = [whichTile stringByAppendingString:@".png"];
+        
         UIImage *toLoad = [UIImage imageNamed:fileName];
         int result = i%numberInGrid;
         if (result==0)
@@ -122,32 +171,40 @@
         positionY = yUnits*rowNumber;
 //        NSLog(@"result: %d i: %d xPosition: %f yPosition: %f \n",result, i,positionX, positionY);
 
+        UIImage *imageToUse = [UIImage imageNamed:fileName];
+        UIImageView *imageView = [[UIImageView alloc]initWithImage:imageToUse];
         
         GJLTileButton *individualTile = [GJLTileButton button];
         [individualTile setBackgroundImage:toLoad forState:UIControlStateNormal];
+        [individualTile setImage:toLoad forState:UIControlStateHighlighted];
+        individualTile.adjustsImageWhenHighlighted=YES; //hack2
+
         individualTile.titleLabel.font = [UIFont boldSystemFontOfSize:12.0f];
-        [individualTile setTitle: whichTile forState:UIControlStateNormal];
+        CGPoint positionOfFrame = CGPointMake(positionX,positionY);
         individualTile.center = CGPointMake(positionX,positionY);
-        individualTile.tileName=whichTile;
-        individualTile.tileGridLocation = [locationArray objectAtIndex:(i)];
+        individualTile.tileName=[locationArray objectAtIndex:(i)];
+        [_whereInGrid addObject:[locationArray objectAtIndex:(i)]];
         individualTile.tag = i+1;
         [_storedLocations addObject:[NSValue valueWithCGPoint:individualTile.center]];
-        _blankTileLocationX = &positionX; //works because it is the last in teh loop
-        _blankTileLocationY = &positionY; //works because it is the last in teh loop
-		[self.view addSubview:individualTile];
+        individualTile.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+		
+        [imageView setCenter:positionOfFrame];
+        
+        imageView.userInteractionEnabled=YES;
         [individualTile addTarget:self action:@selector(pushed:) forControlEvents: UIControlEventTouchUpInside];
+        [self.view addSubview:individualTile];
 
     }
 }
 
 
-
+/*
 - (void) viewDidAppear:(BOOL)animated
 {
     CGPoint viewCenter = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds));
     self.view.center = viewCenter;
 }
-
+*/
 
 
 - (void)didReceiveMemoryWarning

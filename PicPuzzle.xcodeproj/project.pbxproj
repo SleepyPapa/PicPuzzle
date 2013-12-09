@@ -8,6 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		100271F9184D5999001B870A /* GJLTileButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 100271F8184D5999001B870A /* GJLTileButton.m */; };
+		108499111852438E00831D11 /* smalltile_blank.png in Resources */ = {isa = PBXBuildFile; fileRef = 108499011852438E00831D11 /* smalltile_blank.png */; };
+		108499121852438E00831D11 /* smalltile1.png in Resources */ = {isa = PBXBuildFile; fileRef = 108499021852438E00831D11 /* smalltile1.png */; };
+		108499131852438E00831D11 /* smalltile2.png in Resources */ = {isa = PBXBuildFile; fileRef = 108499031852438E00831D11 /* smalltile2.png */; };
+		108499141852438E00831D11 /* smalltile3.png in Resources */ = {isa = PBXBuildFile; fileRef = 108499041852438E00831D11 /* smalltile3.png */; };
+		108499151852438E00831D11 /* smalltile4.png in Resources */ = {isa = PBXBuildFile; fileRef = 108499051852438E00831D11 /* smalltile4.png */; };
+		108499161852438E00831D11 /* smalltile5.png in Resources */ = {isa = PBXBuildFile; fileRef = 108499061852438E00831D11 /* smalltile5.png */; };
+		108499171852438E00831D11 /* smalltile6.png in Resources */ = {isa = PBXBuildFile; fileRef = 108499071852438E00831D11 /* smalltile6.png */; };
+		108499181852438E00831D11 /* smalltile7.png in Resources */ = {isa = PBXBuildFile; fileRef = 108499081852438E00831D11 /* smalltile7.png */; };
+		108499191852438E00831D11 /* smalltile8.png in Resources */ = {isa = PBXBuildFile; fileRef = 108499091852438E00831D11 /* smalltile8.png */; };
+		1084991A1852438E00831D11 /* smalltile9.png in Resources */ = {isa = PBXBuildFile; fileRef = 1084990A1852438E00831D11 /* smalltile9.png */; };
+		1084991B1852438E00831D11 /* smalltile10.png in Resources */ = {isa = PBXBuildFile; fileRef = 1084990B1852438E00831D11 /* smalltile10.png */; };
+		1084991C1852438E00831D11 /* smalltile11.png in Resources */ = {isa = PBXBuildFile; fileRef = 1084990C1852438E00831D11 /* smalltile11.png */; };
+		1084991D1852438E00831D11 /* smalltile12.png in Resources */ = {isa = PBXBuildFile; fileRef = 1084990D1852438E00831D11 /* smalltile12.png */; };
+		1084991E1852438E00831D11 /* smalltile13.png in Resources */ = {isa = PBXBuildFile; fileRef = 1084990E1852438E00831D11 /* smalltile13.png */; };
+		1084991F1852438E00831D11 /* smalltile14.png in Resources */ = {isa = PBXBuildFile; fileRef = 1084990F1852438E00831D11 /* smalltile14.png */; };
+		108499201852438E00831D11 /* smalltile15.png in Resources */ = {isa = PBXBuildFile; fileRef = 108499101852438E00831D11 /* smalltile15.png */; };
 		10EFB7D21845174200A0A5C6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10EFB7D11845174200A0A5C6 /* Foundation.framework */; };
 		10EFB7D41845174200A0A5C6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10EFB7D31845174200A0A5C6 /* CoreGraphics.framework */; };
 		10EFB7D61845174200A0A5C6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10EFB7D51845174200A0A5C6 /* UIKit.framework */; };
@@ -53,6 +69,22 @@
 /* Begin PBXFileReference section */
 		100271F7184D5999001B870A /* GJLTileButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GJLTileButton.h; sourceTree = "<group>"; };
 		100271F8184D5999001B870A /* GJLTileButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GJLTileButton.m; sourceTree = "<group>"; };
+		108499011852438E00831D11 /* smalltile_blank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smalltile_blank.png; sourceTree = "<group>"; };
+		108499021852438E00831D11 /* smalltile1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smalltile1.png; sourceTree = "<group>"; };
+		108499031852438E00831D11 /* smalltile2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smalltile2.png; sourceTree = "<group>"; };
+		108499041852438E00831D11 /* smalltile3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smalltile3.png; sourceTree = "<group>"; };
+		108499051852438E00831D11 /* smalltile4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smalltile4.png; sourceTree = "<group>"; };
+		108499061852438E00831D11 /* smalltile5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smalltile5.png; sourceTree = "<group>"; };
+		108499071852438E00831D11 /* smalltile6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smalltile6.png; sourceTree = "<group>"; };
+		108499081852438E00831D11 /* smalltile7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smalltile7.png; sourceTree = "<group>"; };
+		108499091852438E00831D11 /* smalltile8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smalltile8.png; sourceTree = "<group>"; };
+		1084990A1852438E00831D11 /* smalltile9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smalltile9.png; sourceTree = "<group>"; };
+		1084990B1852438E00831D11 /* smalltile10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smalltile10.png; sourceTree = "<group>"; };
+		1084990C1852438E00831D11 /* smalltile11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smalltile11.png; sourceTree = "<group>"; };
+		1084990D1852438E00831D11 /* smalltile12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smalltile12.png; sourceTree = "<group>"; };
+		1084990E1852438E00831D11 /* smalltile13.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smalltile13.png; sourceTree = "<group>"; };
+		1084990F1852438E00831D11 /* smalltile14.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smalltile14.png; sourceTree = "<group>"; };
+		108499101852438E00831D11 /* smalltile15.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smalltile15.png; sourceTree = "<group>"; };
 		10EFB7CE1845174200A0A5C6 /* PicPuzzle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PicPuzzle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10EFB7D11845174200A0A5C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		10EFB7D31845174200A0A5C6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -163,6 +195,22 @@
 		10EFB7D81845174200A0A5C6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				108499011852438E00831D11 /* smalltile_blank.png */,
+				108499021852438E00831D11 /* smalltile1.png */,
+				108499031852438E00831D11 /* smalltile2.png */,
+				108499041852438E00831D11 /* smalltile3.png */,
+				108499051852438E00831D11 /* smalltile4.png */,
+				108499061852438E00831D11 /* smalltile5.png */,
+				108499071852438E00831D11 /* smalltile6.png */,
+				108499081852438E00831D11 /* smalltile7.png */,
+				108499091852438E00831D11 /* smalltile8.png */,
+				1084990A1852438E00831D11 /* smalltile9.png */,
+				1084990B1852438E00831D11 /* smalltile10.png */,
+				1084990C1852438E00831D11 /* smalltile11.png */,
+				1084990D1852438E00831D11 /* smalltile12.png */,
+				1084990E1852438E00831D11 /* smalltile13.png */,
+				1084990F1852438E00831D11 /* smalltile14.png */,
+				108499101852438E00831D11 /* smalltile15.png */,
 				10EFB8091845221000A0A5C6 /* tile_blank.png */,
 				10EFB80A1845221000A0A5C6 /* tile15.png */,
 				10EFB80B1845221000A0A5C6 /* tile14.png */,
@@ -282,18 +330,34 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1084991C1852438E00831D11 /* smalltile11.png in Resources */,
+				108499131852438E00831D11 /* smalltile2.png in Resources */,
+				1084991A1852438E00831D11 /* smalltile9.png in Resources */,
 				10EFB81E1845221000A0A5C6 /* tile11.png in Resources */,
 				10EFB81B1845221000A0A5C6 /* tile14.png in Resources */,
+				108499161852438E00831D11 /* smalltile5.png in Resources */,
+				108499171852438E00831D11 /* smalltile6.png in Resources */,
+				1084991E1852438E00831D11 /* smalltile13.png in Resources */,
 				10EFB8261845221000A0A5C6 /* tile3.png in Resources */,
+				108499141852438E00831D11 /* smalltile3.png in Resources */,
 				10EFB8281845221000A0A5C6 /* tile1.png in Resources */,
 				10EFB8211845221000A0A5C6 /* tile8.png in Resources */,
+				1084991B1852438E00831D11 /* smalltile10.png in Resources */,
+				1084991D1852438E00831D11 /* smalltile12.png in Resources */,
 				10EFB8201845221000A0A5C6 /* tile9.png in Resources */,
+				108499201852438E00831D11 /* smalltile15.png in Resources */,
 				10EFB7EA1845174200A0A5C6 /* Images.xcassets in Resources */,
 				10EFB8241845221000A0A5C6 /* tile5.png in Resources */,
 				10EFB7DC1845174200A0A5C6 /* InfoPlist.strings in Resources */,
+				108499121852438E00831D11 /* smalltile1.png in Resources */,
+				108499151852438E00831D11 /* smalltile4.png in Resources */,
+				1084991F1852438E00831D11 /* smalltile14.png in Resources */,
 				10EFB8271845221000A0A5C6 /* tile2.png in Resources */,
+				108499191852438E00831D11 /* smalltile8.png in Resources */,
 				10EFB8191845221000A0A5C6 /* tile_blank.png in Resources */,
 				10EFB81A1845221000A0A5C6 /* tile15.png in Resources */,
+				108499181852438E00831D11 /* smalltile7.png in Resources */,
+				108499111852438E00831D11 /* smalltile_blank.png in Resources */,
 				10EFB81C1845221000A0A5C6 /* tile13.png in Resources */,
 				10EFB8221845221000A0A5C6 /* tile7.png in Resources */,
 				10EFB81D1845221000A0A5C6 /* tile12.png in Resources */,

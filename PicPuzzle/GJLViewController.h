@@ -11,7 +11,7 @@
 @interface GJLViewController : UIViewController
 
 @property NSMutableArray *storedLocations;
-@property CGFloat *blankTileLocationX;
-@property CGFloat *blankTileLocationY;
+@property NSMutableArray *whereInGrid;
+
 
 @end

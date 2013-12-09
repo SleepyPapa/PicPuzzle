@@ -31,14 +31,19 @@
 {
     // Drawing code
 }
+
+
+-(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self.superview bringSubviewToFront:self];
+    [self setNeedsDisplay];
+}
 */
-
-
 
 + (id) button
 {
     GJLTileButton *button = [GJLTileButton buttonWithType:UIButtonTypeCustom];
-	button.frame = CGRectMake(0.0f, 0.0f, 100.0f, 100.0f);
+	button.frame = CGRectMake(0.0f, 0.0f, 70.0f, 68.0f);
     
     // Set up the button aligment properties
 	button.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
@@ -48,8 +53,12 @@
 	[button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 	[button setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
 	button.titleLabel.font = [UIFont boldSystemFontOfSize:24.0f];
+//    button.adjustsImageWhenHighlighted=NO;
+//    button.adjustsImageWhenDisabled=NO;
     
     // Set up the art
+//    [button setTitle:@"x" forState:UIControlStateNormal];
+    button.userInteractionEnabled=YES;
     [button setTitle:@"Click" forState:UIControlStateHighlighted];
     return button;
 }
