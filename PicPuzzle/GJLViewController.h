@@ -12,6 +12,10 @@
 
 @property NSMutableArray *storedLocations;
 @property NSMutableArray *whereInGrid;
+@property NSInteger numberOfTiles;
+
+
+-(void) setUpAllTheLocations;
 
 
 @end

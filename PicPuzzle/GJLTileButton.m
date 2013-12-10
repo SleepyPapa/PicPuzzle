@@ -53,8 +53,8 @@
 	[button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 	[button setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
 	button.titleLabel.font = [UIFont boldSystemFontOfSize:24.0f];
-//    button.adjustsImageWhenHighlighted=NO;
-//    button.adjustsImageWhenDisabled=NO;
+    button.adjustsImageWhenHighlighted=NO;
+    button.adjustsImageWhenDisabled=NO;
     
     // Set up the art
 //    [button setTitle:@"x" forState:UIControlStateNormal];
