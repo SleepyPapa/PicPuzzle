@@ -11,6 +11,7 @@
 		10849924185A368A00831D11 /* white.png in Resources */ = {isa = PBXBuildFile; fileRef = 10849922185A368A00831D11 /* white.png */; };
 		10849929185A3FEE00831D11 /* black.png in Resources */ = {isa = PBXBuildFile; fileRef = 10849927185A3FEE00831D11 /* black.png */; };
 		1084992A185A3FEE00831D11 /* red.png in Resources */ = {isa = PBXBuildFile; fileRef = 10849928185A3FEE00831D11 /* red.png */; };
+		1084992D185A487E00831D11 /* GJLSetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1084992C185A487E00831D11 /* GJLSetupViewController.m */; };
 		10EFB7D21845174200A0A5C6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10EFB7D11845174200A0A5C6 /* Foundation.framework */; };
 		10EFB7D41845174200A0A5C6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10EFB7D31845174200A0A5C6 /* CoreGraphics.framework */; };
 		10EFB7D61845174200A0A5C6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10EFB7D51845174200A0A5C6 /* UIKit.framework */; };
@@ -44,6 +45,8 @@
 		10849922185A368A00831D11 /* white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = white.png; sourceTree = "<group>"; };
 		10849927185A3FEE00831D11 /* black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = black.png; path = ../black.png; sourceTree = "<group>"; };
 		10849928185A3FEE00831D11 /* red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = red.png; path = ../red.png; sourceTree = "<group>"; };
+		1084992B185A487E00831D11 /* GJLSetupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GJLSetupViewController.h; sourceTree = "<group>"; };
+		1084992C185A487E00831D11 /* GJLSetupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GJLSetupViewController.m; sourceTree = "<group>"; };
 		10EFB7CE1845174200A0A5C6 /* PicPuzzle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PicPuzzle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10EFB7D11845174200A0A5C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		10EFB7D31845174200A0A5C6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -126,6 +129,8 @@
 				10EFB7E01845174200A0A5C6 /* GJLAppDelegate.h */,
 				10EFB7E11845174200A0A5C6 /* GJLAppDelegate.m */,
 				10EFB7E31845174200A0A5C6 /* Main.storyboard */,
+				1084992B185A487E00831D11 /* GJLSetupViewController.h */,
+				1084992C185A487E00831D11 /* GJLSetupViewController.m */,
 				10EFB7E61845174200A0A5C6 /* GJLViewController.h */,
 				10EFB7E71845174200A0A5C6 /* GJLViewController.m */,
 				100271F7184D5999001B870A /* GJLTileButton.h */,
@@ -271,6 +276,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1084992D185A487E00831D11 /* GJLSetupViewController.m in Sources */,
 				10EFB7E21845174200A0A5C6 /* GJLAppDelegate.m in Sources */,
 				10EFB7DE1845174200A0A5C6 /* main.m in Sources */,
 				100271F9184D5999001B870A /* GJLTileButton.m in Sources */,

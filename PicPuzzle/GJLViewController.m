@@ -16,16 +16,58 @@
 
 @implementation GJLViewController
 
+- (IBAction)shuffleTiles:(id)sender {
+    
+    for (int i=0; i<20;i++){
+    NSInteger firstRandomValue = arc4random()%(_numberOfTiles*_numberOfTiles);
+    NSInteger secondRandomValue = arc4random()%(_numberOfTiles*_numberOfTiles);
+//        NSLog(@"first %d  second %d  \n",firstRandomValue,secondRandomValue);
+ 
+    //Add one so that the tag is matched
+//    firstRandomValue++;
+//    secondRandomValue++;
+    
+    NSValue *tempValueOne = [_storedLocations objectAtIndex:(firstRandomValue)];
+    NSValue *tempValueTwo = [_storedLocations objectAtIndex:(secondRandomValue)];
+    
+    
+    //update positions with new values
+
+    _storedLocations[secondRandomValue]= tempValueOne;
+    _storedLocations[firstRandomValue]= tempValueTwo;
+
+    //swap around tileGridLocation names
+    
+    NSString *tempStringOne = _whereInGrid[firstRandomValue];
+    NSString *tempStringTwo = _whereInGrid[secondRandomValue];
+    
+    _whereInGrid[secondRandomValue] = tempStringOne;
+    _whereInGrid[firstRandomValue] = tempStringTwo;
+
+    }
+    
+    for (int t=0;t<(_numberOfTiles*_numberOfTiles);t++)
+    {
+    //Update buttons - hopefully will animate them too
+    UIView *tileOne = [self.view viewWithTag:(t+1)];
+    NSValue *tempLocationValue=[_storedLocations objectAtIndex:(t)];
+    tileOne.center=[tempLocationValue CGPointValue];
+        
+        //    UIView *tileTwo = [self.view viewWithTag:(secondRandomValue+1)];
+//    tileTwo.center=[tempValueOne CGPointValue];
+    }
+    
+}
 
 - (void) pushed: (GJLTileButton *) aButton
 {
     NSInteger rowWidth = _numberOfTiles;
     // find index of blank tile
     NSInteger indexOfBlank = [_whereInGrid indexOfObject:@"blank"]; //finds where in _whereInGrid the blank tile is
-//    int tagOfButton = aButton.tag;
+
 
     NSString *tempString = aButton.tileName;
-//    _whereInGrid[tagOfButton-1];
+
     NSInteger indexToMoveTo = [_whereInGrid indexOfObject:tempString];
     if (indexOfBlank == indexToMoveTo)
         return; //clicked on blank tile
@@ -35,7 +77,6 @@
     indexToMoveTo++;
     
     BOOL sameColumn = false;
-//    BOOL adjacentNumbers= false;
     BOOL fourDifferent = false;
     BOOL leftEdge = false;
     BOOL rightEdge = false;
@@ -50,10 +91,6 @@
 
     if((fourDifferent)&(sameColumn))
         canMove=true;
-    
-/*    if ((indexToMoveTo==indexOfBlank+1) || (indexToMoveTo+1==indexOfBlank))
-        adjacentNumbers = true;
-*/
     if ((indexOfBlank%rowWidth)==1)
         leftEdge=true;
     if ((indexOfBlank%rowWidth)==0)
@@ -107,7 +144,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _numberOfTiles=4;
+//    _numberOfTiles=4;
     [self setUpAllTheLocations];
     
 }
@@ -162,7 +199,7 @@
 
         individualTile.center = CGPointMake(positionX,positionY);
         individualTile.bounds = CGRectMake(positionX, positionY, xUnits,yUnits);
-        NSString *locationName = [NSString stringWithFormat:@"location%d",(i+1)];
+        NSString *locationName = [NSString stringWithFormat:@"tile%d",(i+1)];
 
         individualTile.tileName=locationName;
         [_whereInGrid addObject:locationName];
@@ -172,7 +209,7 @@
 
         individualTile.userInteractionEnabled=YES;
         if (i==(totalNumberOfTiles-1)){
-            individualTile.tileName=@"tile_blank";
+            individualTile.tileName=@"blank";
             [_whereInGrid replaceObjectAtIndex:(i) withObject:@"blank"];
             [individualTile setTitle:@"" forState:UIControlStateNormal];
         }
