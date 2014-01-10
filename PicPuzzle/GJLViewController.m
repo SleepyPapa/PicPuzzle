@@ -22,19 +22,6 @@
     NSInteger firstRandomValue = arc4random()%(_numberOfTiles*_numberOfTiles);
     NSInteger secondRandomValue = arc4random()%(_numberOfTiles*_numberOfTiles);
 //        NSLog(@"first %d  second %d  \n",firstRandomValue,secondRandomValue);
- 
-    //Add one so that the tag is matched
-//    firstRandomValue++;
-//    secondRandomValue++;
-    
-    NSValue *tempValueOne = [_storedLocations objectAtIndex:(firstRandomValue)];
-    NSValue *tempValueTwo = [_storedLocations objectAtIndex:(secondRandomValue)];
-    
-    
-    //update positions with new values
-
-    _storedLocations[secondRandomValue]= tempValueOne;
-    _storedLocations[firstRandomValue]= tempValueTwo;
 
     //swap around tileGridLocation names
     
@@ -48,13 +35,16 @@
     
     for (int t=0;t<(_numberOfTiles*_numberOfTiles);t++)
     {
-    //Update buttons - hopefully will animate them too
-    UIView *tileOne = [self.view viewWithTag:(t+1)];
+        NSString *actualLocationInGrid = _whereInGrid[t];
+        NSInteger valueToUse = [actualLocationInGrid intValue];
+        if (!valueToUse)
+            valueToUse=(_numberOfTiles*_numberOfTiles);
+        
+        //Update buttons - hopefully will animate them too
+    UIView *tileOne = [self.view viewWithTag:(valueToUse)];
     NSValue *tempLocationValue=[_storedLocations objectAtIndex:(t)];
     tileOne.center=[tempLocationValue CGPointValue];
-        
-        //    UIView *tileTwo = [self.view viewWithTag:(secondRandomValue+1)];
-//    tileTwo.center=[tempValueOne CGPointValue];
+
     }
     
 }
@@ -65,8 +55,8 @@
     // find index of blank tile
     NSInteger indexOfBlank = [_whereInGrid indexOfObject:@"blank"]; //finds where in _whereInGrid the blank tile is
 
-
-    NSString *tempString = aButton.tileName;
+//    NSInteger buttonTag =
+    NSString *tempString =[@(aButton.tag) stringValue];
 
     NSInteger indexToMoveTo = [_whereInGrid indexOfObject:tempString];
     if (indexOfBlank == indexToMoveTo)
@@ -110,9 +100,10 @@
     
     
     //move tile
-    NSValue *tempValue = [_storedLocations objectAtIndex:(indexOfBlank)];
-    CGPoint currentBlankPosition = [tempValue CGPointValue];
-    CGPoint updatedBlankPosition = aButton.center;
+    NSValue *tempValueBlank = [_storedLocations objectAtIndex:(indexOfBlank)];
+    CGPoint positionOfBlank = [tempValueBlank CGPointValue];
+    NSValue *tempValueMoveTo = [_storedLocations objectAtIndex:(indexToMoveTo)];
+    CGPoint positionToMoveTo = [tempValueMoveTo CGPointValue];
     
     
 //    NSLog(@"blank x %f, y %f\n", currentBlankPosition.x, currentBlankPosition.y);
@@ -120,21 +111,23 @@
     
     
     //update positions with new values
-    _storedLocations[indexToMoveTo]= [NSValue valueWithCGPoint:updatedBlankPosition];
-    _storedLocations[indexOfBlank]= [NSValue valueWithCGPoint:currentBlankPosition];
+//    _storedLocations[indexToMoveTo]= [NSValue valueWithCGPoint:updatedBlankPosition];
+//    _storedLocations[indexOfBlank]= [NSValue valueWithCGPoint:currentBlankPosition];
+
+
     //need to move blank tile to new position
     UIView *blankTile = [self.view viewWithTag:(rowWidth*rowWidth)];
-    blankTile.center=updatedBlankPosition;
+    blankTile.center=positionToMoveTo;
     
     //move the current tile to blank location
-    aButton.center=currentBlankPosition;
+    aButton.center=positionOfBlank;
 //    NSLog(@"aButton layer: %f, blankTile layer: %f",aButton.layer.zPosition, blankTile.layer.zPosition);
     [aButton setContentMode:UIViewContentModeRedraw];
     
     [aButton setNeedsDisplay];
     [blankTile setNeedsDisplay];
     
-    //swap around tileGridLocation names
+    //swap around whereInGrid names
     
     _whereInGrid[indexToMoveTo] = @"blank";
     _whereInGrid[indexOfBlank] = tempString;
@@ -199,7 +192,7 @@
 
         individualTile.center = CGPointMake(positionX,positionY);
         individualTile.bounds = CGRectMake(positionX, positionY, xUnits,yUnits);
-        NSString *locationName = [NSString stringWithFormat:@"tile%d",(i+1)];
+        NSString *locationName = [NSString stringWithFormat:@"%d",(i+1)];
 
         individualTile.tileName=locationName;
         [_whereInGrid addObject:locationName];
