@@ -104,23 +104,20 @@
     CGPoint positionOfBlank = [tempValueBlank CGPointValue];
     NSValue *tempValueMoveTo = [_storedLocations objectAtIndex:(indexToMoveTo)];
     CGPoint positionToMoveTo = [tempValueMoveTo CGPointValue];
-    
-    
-//    NSLog(@"blank x %f, y %f\n", currentBlankPosition.x, currentBlankPosition.y);
-//    NSLog(@"updated x %f, y %f\n", updatedBlankPosition.x, updatedBlankPosition.y);
-    
-    
-    //update positions with new values
-//    _storedLocations[indexToMoveTo]= [NSValue valueWithCGPoint:updatedBlankPosition];
-//    _storedLocations[indexOfBlank]= [NSValue valueWithCGPoint:currentBlankPosition];
-
 
     //need to move blank tile to new position
     UIView *blankTile = [self.view viewWithTag:(rowWidth*rowWidth)];
-    blankTile.center=positionToMoveTo;
+    //Animate numbered tile first so it is foreground
+    [UIView animateWithDuration:0.3 animations:^{
+        aButton.layer.zPosition = MAXFLOAT;
+        aButton.center=positionOfBlank;
+    }];
+    //Animate blank so it is in background
+    [UIView animateWithDuration:0.3 animations:^{
+        blankTile.center=positionToMoveTo;
+    }];
     
     //move the current tile to blank location
-    aButton.center=positionOfBlank;
 //    NSLog(@"aButton layer: %f, blankTile layer: %f",aButton.layer.zPosition, blankTile.layer.zPosition);
     [aButton setContentMode:UIViewContentModeRedraw];
     
@@ -132,6 +129,7 @@
     _whereInGrid[indexToMoveTo] = @"blank";
     _whereInGrid[indexOfBlank] = tempString;
 
+    [self checkForWinningMove];
 }
 
 - (void)viewDidLoad
@@ -141,6 +139,25 @@
     [self setUpAllTheLocations];
     
 }
+
+-(void) checkForWinningMove
+{
+    BOOL allInRightLocation = TRUE;
+//    NSInteger checkingNumber;
+    for (int t=0;t<((_numberOfTiles*_numberOfTiles)-2);t++)
+    {
+        NSString *locationOfTile = _whereInGrid[t];
+        if ([locationOfTile intValue] !=t+1)
+        {
+            allInRightLocation = FALSE;
+        }
+        
+    }
+    NSString *nameOfBlank = @"blank";
+    if ((allInRightLocation) && (_whereInGrid[(_numberOfTiles*_numberOfTiles)-1] == nameOfBlank))
+        NSLog(@"Check has worked and all in a line");
+}
+
 
 -(void) setUpAllTheLocations
 {
