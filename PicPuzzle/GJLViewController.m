@@ -19,8 +19,8 @@
 - (IBAction)shuffleTiles:(id)sender {
     
     for (int i=0; i<20;i++){
-    NSInteger firstRandomValue = arc4random()%(_numberOfTiles*_numberOfTiles);
-    NSInteger secondRandomValue = arc4random()%(_numberOfTiles*_numberOfTiles);
+    NSInteger firstRandomValue = arc4random()%(_numberOfTilesWidth*_numberOfTilesHeight);
+    NSInteger secondRandomValue = arc4random()%(_numberOfTilesWidth*_numberOfTilesHeight);
 //        NSLog(@"first %d  second %d  \n",firstRandomValue,secondRandomValue);
 
     //swap around tileGridLocation names
@@ -33,12 +33,12 @@
 
     }
     
-    for (int t=0;t<(_numberOfTiles*_numberOfTiles);t++)
+    for (int t=0;t<(_numberOfTilesWidth*_numberOfTilesHeight);t++)
     {
         NSString *actualLocationInGrid = _whereInGrid[t];
         NSInteger valueToUse = [actualLocationInGrid intValue];
         if (!valueToUse)
-            valueToUse=(_numberOfTiles*_numberOfTiles);
+            valueToUse=(_numberOfTilesWidth*_numberOfTilesHeight);
         
         //Update buttons - hopefully will animate them too
     UIView *tileOne = [self.view viewWithTag:(valueToUse)];
@@ -51,7 +51,7 @@
 
 - (void) pushed: (GJLTileButton *) aButton
 {
-    NSInteger rowWidth = _numberOfTiles;
+    NSInteger rowWidth = _numberOfTilesWidth;
     // find index of blank tile
     NSInteger indexOfBlank = [_whereInGrid indexOfObject:@"blank"]; //finds where in _whereInGrid the blank tile is
 
@@ -106,7 +106,7 @@
     CGPoint positionToMoveTo = [tempValueMoveTo CGPointValue];
 
     //need to move blank tile to new position
-    UIView *blankTile = [self.view viewWithTag:(rowWidth*rowWidth)];
+    UIView *blankTile = [self.view viewWithTag:(rowWidth*_numberOfTilesHeight)];
     //Animate numbered tile first so it is foreground
     [UIView animateWithDuration:0.3 animations:^{
         aButton.layer.zPosition = MAXFLOAT;
@@ -119,13 +119,13 @@
     
     //move the current tile to blank location
 //    NSLog(@"aButton layer: %f, blankTile layer: %f",aButton.layer.zPosition, blankTile.layer.zPosition);
-    [aButton setContentMode:UIViewContentModeRedraw];
+/*    [aButton setContentMode:UIViewContentModeRedraw];
     
     [aButton setNeedsDisplay];
     [blankTile setNeedsDisplay];
     
     //swap around whereInGrid names
-    
+*/    
     _whereInGrid[indexToMoveTo] = @"blank";
     _whereInGrid[indexOfBlank] = tempString;
 
@@ -144,7 +144,7 @@
 {
     BOOL allInRightLocation = TRUE;
 //    NSInteger checkingNumber;
-    for (int t=0;t<((_numberOfTiles*_numberOfTiles)-2);t++)
+    for (int t=0;t<((_numberOfTilesWidth*_numberOfTilesHeight)-2);t++)
     {
         NSString *locationOfTile = _whereInGrid[t];
         if ([locationOfTile intValue] !=t+1)
@@ -154,7 +154,7 @@
         
     }
     NSString *nameOfBlank = @"blank";
-    if ((allInRightLocation) && (_whereInGrid[(_numberOfTiles*_numberOfTiles)-1] == nameOfBlank))
+    if ((allInRightLocation) && (_whereInGrid[(_numberOfTilesWidth*_numberOfTilesHeight)-1] == nameOfBlank))
         NSLog(@"Check has worked and all in a line");
 }
 
@@ -162,13 +162,14 @@
 -(void) setUpAllTheLocations
 {
 	// Do any additional setup after loading the view, typically from a nib.
-    NSInteger numberInGrid = _numberOfTiles;
+    NSInteger numberInGridWidth = _numberOfTilesWidth;
+    NSInteger numberInGridHeight = _numberOfTilesHeight;
 
-    NSInteger totalNumberOfTiles = numberInGrid*numberInGrid; // number of tiles to add
+    NSInteger totalNumberOfTiles = numberInGridWidth*numberInGridHeight; // number of tiles to add
 
     CGSize insetSize = CGRectInset(self.view.frame, 30, 80).size;
-    CGFloat xUnits = (insetSize.width/numberInGrid);
-    CGFloat yUnits = (insetSize.height/numberInGrid);
+    CGFloat xUnits = (insetSize.width/numberInGridWidth);
+    CGFloat yUnits = (insetSize.height/numberInGridHeight);
     CGFloat positionX = 0.0f;
     CGFloat positionY = 0.0f;
     int rowNumber=0;
@@ -191,7 +192,7 @@
         else {
             toLoad = [UIImage imageNamed:@"white.png"];
         }
-        int result = i%numberInGrid;
+        NSInteger result = i%numberInGridWidth;
         if (result==0)
             rowNumber++;
         positionX = (xUnits*(result))+xUnits;
@@ -204,12 +205,12 @@
         individualTile.adjustsImageWhenHighlighted=YES;
 
         individualTile.titleLabel.font = [UIFont boldSystemFontOfSize:12.0f];
-        NSString *tileUIName =[NSString stringWithFormat:@"%d",(i+1)];
+        NSString *tileUIName =[NSString stringWithFormat:@"%ld",(i+1)];
         [individualTile setTitle:tileUIName forState:UIControlStateNormal];
 
         individualTile.center = CGPointMake(positionX,positionY);
         individualTile.bounds = CGRectMake(positionX, positionY, xUnits,yUnits);
-        NSString *locationName = [NSString stringWithFormat:@"%d",(i+1)];
+        NSString *locationName = [NSString stringWithFormat:@"%ld",(i+1)];
 
         individualTile.tileName=locationName;
         [_whereInGrid addObject:locationName];
@@ -233,14 +234,6 @@
     [self.view.superview setAutoresizesSubviews:YES];
 }
 
-
-/*
-- (void) viewDidAppear:(BOOL)animated
-{
-    CGPoint viewCenter = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds));
-    self.view.center = viewCenter;
-}
-*/
 
 
 - (void)didReceiveMemoryWarning

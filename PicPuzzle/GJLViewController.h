@@ -13,7 +13,8 @@
 
 @property NSMutableArray *storedLocations;
 @property NSMutableArray *whereInGrid;
-@property NSInteger numberOfTiles;
+@property NSInteger numberOfTilesWidth;
+@property NSInteger numberOfTilesHeight;
 
 
 -(void) setUpAllTheLocations;

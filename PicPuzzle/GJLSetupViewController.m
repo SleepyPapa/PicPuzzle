@@ -25,17 +25,23 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    GJLViewController *vc = [segue destinationViewController];
+    
     if ([segue.identifier isEqualToString:@"simple"]) {
-        [segue.destinationViewController setNumberOfTiles:3];
+         [vc setNumberOfTilesWidth:3];
+         [vc setNumberOfTilesHeight:3];
     }
     if ([segue.identifier isEqualToString:@"medium"]) {
-        [segue.destinationViewController setNumberOfTiles:4];
+        [vc setNumberOfTilesWidth:4];
+        [vc setNumberOfTilesHeight:4];
     }
     if ([segue.identifier isEqualToString:@"hard"]) {
-        [segue.destinationViewController setNumberOfTiles:5];
+        [vc setNumberOfTilesWidth:5];
+        [vc setNumberOfTilesHeight:6];
     }
     if ([segue.identifier isEqualToString:@"crazy"]) {
-        [segue.destinationViewController setNumberOfTiles:6];
+        [vc setNumberOfTilesWidth:6];
+        [vc setNumberOfTilesHeight:10];
     }
 }
 
