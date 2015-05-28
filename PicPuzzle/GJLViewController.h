@@ -15,9 +15,13 @@
 @property NSMutableArray *whereInGrid;
 @property NSInteger numberOfTilesWidth;
 @property NSInteger numberOfTilesHeight;
+@property (weak, nonatomic) IBOutlet UIButton *resetTheData;
 
 
 -(void) setUpAllTheLocations;
+-(BOOL) loadTheTiles;
+-(void) saveTheTiles;
+-(void) getGeneratedPosition;
 
 
 @end
