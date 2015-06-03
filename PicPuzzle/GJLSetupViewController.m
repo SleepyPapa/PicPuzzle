@@ -45,6 +45,7 @@
     }
 }
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -57,4 +58,18 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(IBAction)removeDataFile:(id)sender{
+    {
+        NSString *myFile = @"whereStored.plist";
+        NSArray *filePaths = NSSearchPathForDirectoriesInDomains (NSDocumentDirectory,  NSUserDomainMask, YES);
+        NSString *documentsDirectory = [filePaths objectAtIndex:0];
+        NSString *path = [documentsDirectory stringByAppendingPathComponent:myFile];
+        NSError *error;
+        if(![[NSFileManager defaultManager] removeItemAtPath:path error:&error])
+        {
+            NSLog(@"Error deleting! %@", error );
+            //TODO: Handle/Log error
+        }
+    }
+}
 @end

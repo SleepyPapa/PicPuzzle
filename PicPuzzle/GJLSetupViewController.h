@@ -10,5 +10,6 @@
 #import "GJLViewController.h"
 
 @interface GJLSetupViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIButton *removeDataFile;
 
 @end

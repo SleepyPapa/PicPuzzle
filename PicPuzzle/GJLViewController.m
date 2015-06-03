@@ -23,9 +23,9 @@
         NSInteger secondRandomValue = arc4random()%(_numberOfTilesWidth*_numberOfTilesHeight);
         //        NSLog(@"first %d  second %d  \n",firstRandomValue,secondRandomValue);
         if (firstRandomValue==0)
-            firstRandomValue++;
+            firstRandomValue=_numberOfTilesWidth*_numberOfTilesHeight;
         if (secondRandomValue==0)
-            secondRandomValue++;
+            secondRandomValue=_numberOfTilesWidth*_numberOfTilesHeight;
             
             //swap around tileGridLocation names
         
@@ -36,32 +36,14 @@
         _whereInGrid[firstRandomValue] = tempStringTwo;
         
     }
-    
-    for (int t=1;t<=(_numberOfTilesWidth*_numberOfTilesHeight);t++)
-    {
-        NSString *actualLocationInGrid = _whereInGrid[t];
-        NSInteger valueToUse = [actualLocationInGrid intValue];
-        if (!valueToUse)
-            valueToUse=(_numberOfTilesWidth*_numberOfTilesHeight);
-        
-        //Update buttons - hopefully will animate them too
-        UIView *tileOne = [self.view viewWithTag:(valueToUse)];
-        NSValue *tempLocationValue=[_storedLocations objectAtIndex:(t)];
-        [UIView animateWithDuration:0.3 animations:^{
-            tileOne.center=[tempLocationValue CGPointValue];
-        }
-         ];
-    }
-
     [self saveTheTiles];
+    [self redrawOfTiles];
 }
 - (IBAction)resetTheData:(id)sender {
-    
-    [_whereInGrid removeAllObjects];
-    
+        
     NSInteger fullArray = _numberOfTilesWidth*_numberOfTilesHeight;
 
-    _whereInGrid[0] = @"ignore";
+    _whereInGrid[0] = [NSString stringWithFormat:@"%ld",(fullArray)];
 
     for (NSInteger i=1;i<(fullArray+1) ;i++){
         NSString *locationName = [NSString stringWithFormat:@"%ld",(i)];
@@ -71,8 +53,8 @@
 
     _whereInGrid[fullArray] = @"blank";
 
-    
     [self saveTheTiles];
+    [self redrawOfTiles];
 }
 
 - (void) pushed: (GJLTileButton *) aButton
@@ -147,17 +129,73 @@
 {
     
     [_whereInGrid removeAllObjects];
-    //    BOOL fileExists = FALSE;
+
     //check for existing files already
     NSString *myFile = @"whereStored.plist";
     NSArray *filePaths = NSSearchPathForDirectoriesInDomains (NSDocumentDirectory,  NSUserDomainMask, YES);
     NSString *documentsDirectory = [filePaths objectAtIndex:0];
     NSString *path = [documentsDirectory stringByAppendingPathComponent:myFile];
-    //    NSMutableArray *checkWhere;
-    BOOL didRead = (_whereInGrid = [NSMutableArray arrayWithContentsOfFile:path]);
-    if (didRead)
-        NSLog(@"It read");
-    return didRead;
+    NSMutableArray *tempGrid = [NSMutableArray arrayWithContentsOfFile:path];
+ 
+    if (tempGrid==nil){
+    //Load of file has failed, create default data
+        [_allDataToBeStored removeAllObjects];
+        [_allDataToBeStored addObject:@"9"]; //defaults to 3x3 game
+        _whereInGrid[0]=_allDataToBeStored[0];
+        
+        for (int loop = 1;loop<9;loop++)
+        {
+            [_allDataToBeStored addObject:[NSString stringWithFormat:@"%d",(loop)]];
+            _whereInGrid[loop]=_allDataToBeStored[loop];
+        }
+        
+        [_whereInGrid addObject:@"blank"]; //defaults to 3x3 game
+        [_allDataToBeStored addObject:@"blank"]; //defaults to 3x3 game
+        
+        for (int loop = 1;loop<16;loop++)
+        {
+            [_allDataToBeStored addObject:[NSString stringWithFormat:@"%d",(loop)]];
+        }
+        [_allDataToBeStored addObject:@"blank"]; //need blank
+        for (int loop = 1;loop<25;loop++)
+        {
+            [_allDataToBeStored addObject:[NSString stringWithFormat:@"%d",(loop)]];
+        }
+        [_allDataToBeStored addObject:@"blank"]; //need blank
+        for (int loop = 1;loop<60;loop++)
+        {
+            [_allDataToBeStored addObject:[NSString stringWithFormat:@"%d",(loop)]];
+        }
+        [_allDataToBeStored addObject:@"blank"]; //need blank
+        return FALSE; //blank data file and game set up
+    }
+    else {
+        NSInteger totalInTempGrid = tempGrid.count;
+        for (int i=0;i<(totalInTempGrid);i++){
+            _allDataToBeStored[i]=tempGrid[i];
+
+        }
+    
+    //copy from _whereInGrid to _allDataToBeStored
+    
+    NSInteger totalTiles = _numberOfTilesHeight*_numberOfTilesWidth;
+    NSInteger offset = 0;
+    if (totalTiles==9)
+        offset=0;
+    else if (totalTiles==16)
+        offset=10;
+    else if (totalTiles==25)
+        offset=26;
+    else
+        offset=49;
+
+    _whereInGrid[0]=tempGrid[0]; //Get the type of game
+    
+    for (int i=1;i<(_numberOfTilesWidth*_numberOfTilesHeight+1);i++){
+        _whereInGrid[i]=tempGrid[i+offset];
+        }
+    return TRUE;  //Game data loaded from storage, not generated
+    }
 }
 - (void)saveTheTiles
 {
@@ -168,26 +206,70 @@
     NSError *error;
     if(![[NSFileManager defaultManager] removeItemAtPath:path error:&error])
     {
-        NSLog(@"Error deleting!");
+        NSLog(@"Error deleting in saveTheTiles!%@", error);
         //TODO: Handle/Log error
     }
-    BOOL didWrite = [_whereInGrid writeToFile:path atomically:YES];
+    
+    //copy from _whereInGrid to _allDataToBeStored
+    
+    NSInteger totalTiles = _numberOfTilesHeight*_numberOfTilesWidth;
+    NSInteger offset = 0;
+    if (totalTiles==9)
+        offset=0;
+    else if (totalTiles==16)
+        offset=10;
+    else if (totalTiles==25)
+        offset=26;
+    else
+        offset=49;
+    
+    for (int i=0;i<(totalTiles);i++){
+        _allDataToBeStored[i+1]=_whereInGrid[i+offset+1];
+    }
+    
+    
+    
+    BOOL didWrite = [_allDataToBeStored writeToFile:path atomically:YES];
     if (didWrite)
         NSLog(@"It saved");
 
 }
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
     [self setUpAllTheLocations];
     
+}
+
+- (void) redrawOfTiles {
+    for (int t=1;t<=(_numberOfTilesWidth*_numberOfTilesHeight);t++)
+    {
+    NSString *actualLocationInGrid = _whereInGrid[t];
+    NSInteger valueToUse = [actualLocationInGrid intValue];
+    if (!valueToUse)
+        valueToUse=(_numberOfTilesWidth*_numberOfTilesHeight);
+    
+    //Update buttons - hopefully will animate them too
+    UIView *tileOne = [self.view viewWithTag:(valueToUse)];
+    NSValue *tempLocationValue=[_storedLocations objectAtIndex:(t)];
+    [UIView animateWithDuration:0.3 animations:^{
+        tileOne.center=[tempLocationValue CGPointValue];
+        }
+     ];
+    }
+    }
+- (void) viewDidDisappear:(BOOL)animated{
+    [self saveTheTiles];
+
 }
 
 -(void) checkForWinningMove
 {
     BOOL allInRightLocation = TRUE;
-    for (int t=0;t<((_numberOfTilesWidth*_numberOfTilesHeight)-1);t++)
+    for (int t=1;t<((_numberOfTilesWidth*_numberOfTilesHeight));t++)
     {
         NSString *locationOfTile = _whereInGrid[t];
         if ([locationOfTile intValue] !=t+1)
@@ -204,13 +286,19 @@
 
 -(void) setUpAllTheLocations
 {
-    
     self.view.backgroundColor = [UIColor whiteColor];
+    
     // Do any additional setup after loading the view, typically from a nib.
+    _whereInGrid = [[NSMutableArray alloc] init];
+    _storedLocations = [[NSMutableArray alloc] init];
+    _allDataToBeStored = [[NSMutableArray alloc] init];
+
     NSInteger numberInGridWidth = _numberOfTilesWidth;
     NSInteger numberInGridHeight = _numberOfTilesHeight;
     
     NSInteger totalNumberOfTiles = numberInGridWidth*numberInGridHeight; // number of tiles to add
+
+    [_whereInGrid addObject:[NSString stringWithFormat:@"%ld",(totalNumberOfTiles)]]; //fill up the zero location in array with the type of the game
     
     CGSize insetSize = CGRectInset(self.view.bounds, 10, 80).size;
     CGFloat xUnits = (insetSize.width/numberInGridWidth);
@@ -219,15 +307,6 @@
     CGFloat positionX = 0.0f;
     CGFloat positionY = 0.0f;
     int rowNumber=0;
-
-    
-    [_storedLocations removeAllObjects];
-
-    [_whereInGrid removeAllObjects];
-    
-    
-    _whereInGrid = [[NSMutableArray alloc] init];
-    _storedLocations = [[NSMutableArray alloc] init];
     
     CGPoint firstPosition = CGPointMake(positionX,positionY);
     [_storedLocations addObject:[NSValue valueWithCGPoint:firstPosition]];
@@ -249,7 +328,6 @@
     loadedFileCorrectly = [self loadTheTiles];
 //    loadedFileCorrectly=FALSE;
     if (!loadedFileCorrectly){
-        [_whereInGrid addObject:@"ignore"]; //fill up the zero location in array
         for (NSInteger i = 1; i < (totalNumberOfTiles+1); i++)
         {
             NSString *fileName;
@@ -263,12 +341,7 @@
             else {
                 toLoad = [UIImage imageNamed:@"white.png"];
             }
-/*            NSInteger result = i%numberInGridWidth;
-            if (result==0)
-                rowNumber++;
-            positionX = (xUnits*result)+(xUnits/2);
-            positionY = (yUnits*rowNumber);
-*/
+
             GJLTileButton *individualTile = [GJLTileButton button];
             
             [individualTile setBackgroundImage:toLoad forState:UIControlStateNormal];
@@ -360,7 +433,7 @@
             ;
         }
     }
-    [self saveTheTiles];
+    [self redrawOfTiles];
 }
 
 
