@@ -42,8 +42,8 @@
 - (IBAction)resetTheData:(id)sender {
         
     NSInteger fullArray = _numberOfTilesWidth*_numberOfTilesHeight;
-
-    _whereInGrid[0] = [NSString stringWithFormat:@"%ld",(fullArray)];
+    [_whereInGrid removeAllObjects];
+    _whereInGrid[0] = [NSString stringWithFormat:@"ignore"];
 
     for (NSInteger i=1;i<(fullArray+1) ;i++){
         NSString *locationName = [NSString stringWithFormat:@"%ld",(i)];
@@ -51,8 +51,8 @@
             _whereInGrid[i]=locationName;
         }
 
-    _whereInGrid[fullArray] = @"blank";
-
+//    _whereInGrid[fullArray] = @"blank";
+    [_whereInGrid replaceObjectAtIndex:(fullArray) withObject:@"blank"];
     [self saveTheTiles];
     [self redrawOfTiles];
 }
@@ -129,7 +129,7 @@
 {
     
     [_whereInGrid removeAllObjects];
-
+    BOOL loadedFromDataFile;
     //check for existing files already
     NSString *myFile = @"whereStored.plist";
     NSArray *filePaths = NSSearchPathForDirectoriesInDomains (NSDocumentDirectory,  NSUserDomainMask, YES);
@@ -140,16 +140,16 @@
     if (tempGrid==nil){
     //Load of file has failed, create default data
         [_allDataToBeStored removeAllObjects];
-        [_allDataToBeStored addObject:@"9"]; //defaults to 3x3 game
+        [_allDataToBeStored addObject:@"ignore"]; //Puts in ignore
         _whereInGrid[0]=_allDataToBeStored[0];
         
         for (int loop = 1;loop<9;loop++)
         {
             [_allDataToBeStored addObject:[NSString stringWithFormat:@"%d",(loop)]];
-            _whereInGrid[loop]=_allDataToBeStored[loop];
+//            _whereInGrid[loop]=_allDataToBeStored[loop];
         }
         
-        [_whereInGrid addObject:@"blank"]; //defaults to 3x3 game
+//        [_whereInGrid addObject:@"blank"]; //defaults to 3x3 game
         [_allDataToBeStored addObject:@"blank"]; //defaults to 3x3 game
         
         for (int loop = 1;loop<16;loop++)
@@ -167,9 +167,10 @@
             [_allDataToBeStored addObject:[NSString stringWithFormat:@"%d",(loop)]];
         }
         [_allDataToBeStored addObject:@"blank"]; //need blank
-        return FALSE; //blank data file and game set up
+        loadedFromDataFile= FALSE; //blank data file and game set up
     }
     else {
+        loadedFromDataFile=TRUE;
         NSInteger totalInTempGrid = tempGrid.count;
         for (int i=0;i<(totalInTempGrid);i++){
             _allDataToBeStored[i]=tempGrid[i];
@@ -183,20 +184,21 @@
     if (totalTiles==9)
         offset=0;
     else if (totalTiles==16)
-        offset=10;
+        offset=9;
     else if (totalTiles==25)
-        offset=26;
+        offset=25;
     else
         offset=49;
 
     _whereInGrid[0]=tempGrid[0]; //Get the type of game
     
-    for (int i=1;i<(_numberOfTilesWidth*_numberOfTilesHeight+1);i++){
+    for (int i=1;i<((_numberOfTilesWidth*_numberOfTilesHeight)+1);i++){
         _whereInGrid[i]=tempGrid[i+offset];
         }
-    return TRUE;  //Game data loaded from storage, not generated
     }
+    return loadedFromDataFile;  //Game data loaded from storage, not generated
 }
+
 - (void)saveTheTiles
 {
     NSString *myFile = @"whereStored.plist";
@@ -217,14 +219,14 @@
     if (totalTiles==9)
         offset=0;
     else if (totalTiles==16)
-        offset=10;
+        offset=9;
     else if (totalTiles==25)
-        offset=26;
+        offset=25;
     else
         offset=49;
     
-    for (int i=0;i<(totalTiles);i++){
-        _allDataToBeStored[i+1]=_whereInGrid[i+offset+1];
+    for (int i=1;i<(totalTiles+1);i++){
+        _allDataToBeStored[i+offset]=_whereInGrid[i];
     }
     
     
@@ -298,7 +300,8 @@
     
     NSInteger totalNumberOfTiles = numberInGridWidth*numberInGridHeight; // number of tiles to add
 
-    [_whereInGrid addObject:[NSString stringWithFormat:@"%ld",(totalNumberOfTiles)]]; //fill up the zero location in array with the type of the game
+    //    [_whereInGrid addObject:[NSString stringWithFormat:@"%ld",(totalNumberOfTiles)]]; //fill up the zero location in array with the type of the game
+        [_whereInGrid addObject:[NSString stringWithFormat:@"ignore"]]; //fill up the zero location in array with blank data
     
     CGSize insetSize = CGRectInset(self.view.bounds, 10, 80).size;
     CGFloat xUnits = (insetSize.width/numberInGridWidth);

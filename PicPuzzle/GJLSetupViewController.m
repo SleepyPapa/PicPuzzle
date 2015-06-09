@@ -37,7 +37,7 @@
     }
     if ([segue.identifier isEqualToString:@"hard"]) {
         [vc setNumberOfTilesWidth:5];
-        [vc setNumberOfTilesHeight:6];
+        [vc setNumberOfTilesHeight:5];
     }
     if ([segue.identifier isEqualToString:@"crazy"]) {
         [vc setNumberOfTilesWidth:6];
