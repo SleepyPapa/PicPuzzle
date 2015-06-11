@@ -36,6 +36,8 @@
         _whereInGrid[firstRandomValue] = tempStringTwo;
         
     }
+    _numberOfMoves=0; //reset the counter
+    [self updateCounter];
     [self saveTheTiles];
     [self redrawOfTiles];
 }
@@ -53,6 +55,8 @@
 
 //    _whereInGrid[fullArray] = @"blank";
     [_whereInGrid replaceObjectAtIndex:(fullArray) withObject:@"blank"];
+    _numberOfMoves=0; //reset the counter
+    [self updateCounter];
     [self saveTheTiles];
     [self redrawOfTiles];
 }
@@ -121,8 +125,26 @@
     //move the current tile to blank location
     _whereInGrid[indexToMoveTo] = @"blank";
     _whereInGrid[indexOfBlank] = tempString;
-    
+    _numberOfMoves++;
+    [self updateCounter];
     [self checkForWinningMove];
+}
+
+-(void)updateCounter
+{
+    UIView *numberOfMovesView = [self.view viewWithTag:(2000)];
+    
+    if ([numberOfMovesView isKindOfClass:[UILabel class]]) {
+        CGFloat centreX = numberOfMovesView.center.x;
+        CGFloat centreY = numberOfMovesView.center.y;
+        [numberOfMovesView removeFromSuperview];
+        NSString* newNumberOfMovesLabel = [NSString stringWithFormat:@"Number of Moves: %ld",(long)_numberOfMoves ];
+        UILabel *newLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,0,176,21)];
+        newLabel.tag=2000;
+        newLabel.text = newNumberOfMovesLabel;
+        newLabel.center=CGPointMake(centreX,centreY);
+        [self.view addSubview:newLabel];
+    }
 }
 
 - (BOOL)loadTheTiles
@@ -270,6 +292,8 @@
 
 }
 
+
+
 -(void) checkForWinningMove
 {
     BOOL allInRightLocation = TRUE;
@@ -296,7 +320,7 @@
     _whereInGrid = [[NSMutableArray alloc] init];
     _storedLocations = [[NSMutableArray alloc] init];
     _allDataToBeStored = [[NSMutableArray alloc] init];
-
+    _numberOfMoves=0;
     NSInteger numberInGridWidth = _numberOfTilesWidth;
     NSInteger numberInGridHeight = _numberOfTilesHeight;
     

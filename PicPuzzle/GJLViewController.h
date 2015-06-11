@@ -16,6 +16,7 @@
 @property NSMutableArray *allDataToBeStored;
 @property NSInteger numberOfTilesWidth;
 @property NSInteger numberOfTilesHeight;
+@property NSInteger numberOfMoves;
 @property (weak, nonatomic) IBOutlet UIButton *resetTheData;
 
 
@@ -23,7 +24,7 @@
 -(BOOL) loadTheTiles;
 -(void) saveTheTiles;
 -(void) redrawOfTiles;
-//-(void) getGeneratedPosition;
+-(void) updateCounter;
 
 
 @end

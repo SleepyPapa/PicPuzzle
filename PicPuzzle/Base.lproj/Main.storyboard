@@ -83,36 +83,58 @@
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="GJLViewController" sceneMemberID="viewController">
-                    <toolbar key="view" autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="bottom" id="hYY-Ba-98K">
+                    <view key="view" contentMode="scaleToFill" id="IoW-OL-4bM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <items>
-                            <barButtonItem systemItem="done" id="hap-vo-9rb">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="lvv-il-GWs">
+                                <rect key="frame" x="58" y="513" width="37" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Done">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
-                                    <segue destination="KhU-3C-EGc" kind="modal" id="lq8-Kp-tCi"/>
+                                    <segue destination="gDn-eX-v58" kind="unwind" unwindAction="UnwindtoThisView:" id="2a3-nv-Dxn"/>
                                 </connections>
-                            </barButtonItem>
-                            <barButtonItem title="Reset" id="sAs-0p-hLm">
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="kBv-9x-xNf">
+                                <rect key="frame" x="140" y="513" width="40" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Reset">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
-                                    <action selector="resetTheData:" destination="vXZ-lx-hvc" id="dAh-1z-6FR"/>
+                                    <action selector="resetTheData:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="WEk-7Q-H71"/>
                                 </connections>
-                            </barButtonItem>
-                            <barButtonItem title="Shuffle" id="gtx-Al-0zW">
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="XWA-4q-tfR">
+                                <rect key="frame" x="214" y="513" width="48" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Shuffle">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
-                                    <action selector="shuffleTiles:" destination="vXZ-lx-hvc" id="yoo-9n-7Uv"/>
+                                    <action selector="shuffleTiles:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Y1h-Fy-Kuc"/>
                                 </connections>
-                            </barButtonItem>
-                        </items>
-                        <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </toolbar>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" tag="2000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of Moves: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UXv-Qf-AbI">
+                                <rect key="frame" x="72" y="473" width="176" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <toolbarItems/>
                     <nil key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <exit id="gDn-eX-v58" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="590" y="105"/>
+            <point key="canvasLocation" x="425" y="101"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="eTN-7v-hAh">
@@ -139,7 +161,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="lq8-Kp-tCi"/>
-        <segue reference="Djm-cD-GLa"/>
+        <segue reference="9pa-RC-gD7"/>
     </inferredMetricsTieBreakers>
 </document>
