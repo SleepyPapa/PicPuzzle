@@ -103,7 +103,7 @@
     
     //move tile
     //need to swap blank with clicked tile
-    NSLog((@"swapping %ld with %ld"), (long)indexOfBlank, (long)indexToMoveTo);
+//    NSLog((@"swapping %ld with %ld"), (long)indexOfBlank, (long)indexToMoveTo);
     
     UIView *blankTile = [self.view viewWithTag:(_numberOfTilesWidth*_numberOfTilesHeight)]; //Blank is always last
 
@@ -139,6 +139,7 @@
  
     if (tempGrid==nil){
     //Load of file has failed, create default data
+        NSLog(@"recreating data file");
         [_allDataToBeStored removeAllObjects];
         [_allDataToBeStored addObject:@"ignore"]; //Puts in ignore
         _whereInGrid[0]=_allDataToBeStored[0];
@@ -170,6 +171,7 @@
         loadedFromDataFile= FALSE; //blank data file and game set up
     }
     else {
+        NSLog(@"loading data file");
         loadedFromDataFile=TRUE;
         NSInteger totalInTempGrid = tempGrid.count;
         for (int i=0;i<(totalInTempGrid);i++){
@@ -188,12 +190,12 @@
     else if (totalTiles==25)
         offset=25;
     else
-        offset=49;
+        offset=50;
 
     _whereInGrid[0]=tempGrid[0]; //Get the type of game
     
     for (int i=1;i<((_numberOfTilesWidth*_numberOfTilesHeight)+1);i++){
-        _whereInGrid[i]=tempGrid[i+offset];
+        _whereInGrid[i]=_allDataToBeStored[i+offset];
         }
     }
     return loadedFromDataFile;  //Game data loaded from storage, not generated
@@ -223,7 +225,7 @@
     else if (totalTiles==25)
         offset=25;
     else
-        offset=49;
+        offset=50;
     
     for (int i=1;i<(totalTiles+1);i++){
         _allDataToBeStored[i+offset]=_whereInGrid[i];
@@ -274,7 +276,7 @@
     for (int t=1;t<((_numberOfTilesWidth*_numberOfTilesHeight));t++)
     {
         NSString *locationOfTile = _whereInGrid[t];
-        if ([locationOfTile intValue] !=t+1)
+        if ([locationOfTile intValue] !=t)
         {
             allInRightLocation = FALSE;
         }
@@ -349,7 +351,7 @@
             
             [individualTile setBackgroundImage:toLoad forState:UIControlStateNormal];
             
-            individualTile.adjustsImageWhenHighlighted=YES;
+           // individualTile.adjustsImageWhenHighlighted=YES;
             
             individualTile.titleLabel.font = [UIFont boldSystemFontOfSize:12.0f];
             NSString *tileUIName =[NSString stringWithFormat:@"%ld",(i)];
@@ -357,6 +359,7 @@
             NSValue *tempValue = [_storedLocations objectAtIndex:(i)];
             individualTile.center = [tempValue CGPointValue];
             individualTile.bounds = CGRectMake(0,0, xUnits,yUnits);
+            individualTile.frame = CGRectMake(0,0, xUnits,yUnits);
             NSString *locationName = [NSString stringWithFormat:@"%ld",(i)];
             
             individualTile.tileName=locationName;
@@ -412,28 +415,19 @@
             positionY = (yUnits*rows)+(yUnits/2);
             
             GJLTileButton *individualTile = [GJLTileButton button];
-            
             [individualTile setBackgroundImage:toLoad forState:UIControlStateNormal];
-            
-            individualTile.adjustsImageWhenHighlighted=YES;
-            
             individualTile.titleLabel.font = [UIFont boldSystemFontOfSize:12.0f];
             NSString *tileUIName = actualLocationInGrid;
             [individualTile setTitle:tileUIName forState:UIControlStateNormal];
             NSValue *tempValue = [_storedLocations objectAtIndex:(valueToUse)];
             individualTile.center = [tempValue CGPointValue];
-            individualTile.bounds = CGRectMake(0,0, xUnits,yUnits);
-            NSLog(@"valueToUse %ld columns %ld, rows %ld, CentreX %f, Centrey %f\n",(long)valueToUse,(long)columns, (long)rows, individualTile.center.x,individualTile.center.y);
+            individualTile.frame = CGRectMake(0,0,xUnits,yUnits);
             individualTile.tag = valueToUse;
-            individualTile.contentMode = UIViewContentModeScaleAspectFit;
-            
             individualTile.userInteractionEnabled=YES;
 
             
             [individualTile addTarget:self action:@selector(pushed:) forControlEvents: UIControlEventTouchUpInside];
             [self.view addSubview:individualTile];
-            self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
-            ;
         }
     }
     [self redrawOfTiles];
