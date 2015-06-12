@@ -67,6 +67,17 @@
                                             <segue destination="vXZ-lx-hvc" kind="modal" identifier="hard" id="Djm-cD-GLa"/>
                                         </connections>
                                     </button>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="0Sx-z2-Jcf">
+                                        <rect key="frame" x="103" y="135" width="115" height="29"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <segments>
+                                            <segment title="Plain"/>
+                                            <segment title="Picture"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="toggleTypeOfPuzzle:" destination="KhU-3C-EGc" eventType="valueChanged" id="tia-lY-QYB"/>
+                                        </connections>
+                                    </segmentedControl>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
@@ -74,6 +85,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="5g9-jP-GiF"/>
+                    <connections>
+                        <outlet property="toggleTypeOfPuzzle" destination="0Sx-z2-Jcf" id="t5P-4c-VXM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WC0-oP-kFZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -23,25 +23,33 @@
     return self;
 }
 
+
+
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     GJLViewController *vc = [segue destinationViewController];
+
+ 
     
     if ([segue.identifier isEqualToString:@"simple"]) {
          [vc setNumberOfTilesWidth:3];
          [vc setNumberOfTilesHeight:3];
+         [vc setIsPlain:_isPlainPuzzle];
     }
     if ([segue.identifier isEqualToString:@"medium"]) {
         [vc setNumberOfTilesWidth:4];
         [vc setNumberOfTilesHeight:4];
+        [vc setIsPlain:_isPlainPuzzle];
     }
     if ([segue.identifier isEqualToString:@"hard"]) {
         [vc setNumberOfTilesWidth:5];
         [vc setNumberOfTilesHeight:5];
+        [vc setIsPlain:_isPlainPuzzle];
     }
     if ([segue.identifier isEqualToString:@"crazy"]) {
         [vc setNumberOfTilesWidth:6];
         [vc setNumberOfTilesHeight:10];
+        [vc setIsPlain:_isPlainPuzzle];
     }
 }
 
@@ -54,6 +62,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    _isPlainPuzzle = TRUE;
 }
 
 - (void)didReceiveMemoryWarning
@@ -61,6 +70,18 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+-(IBAction)toggleTypeOfPuzzle:(UISegmentedControl *)segmentedButton {
+        if (segmentedButton.selectedSegmentIndex==0){
+        _isPlainPuzzle = TRUE;
+        }
+        else
+        {
+        _isPlainPuzzle = FALSE;
+
+        }
+    }
+
 
 -(IBAction)removeDataFile:(id)sender{
     {

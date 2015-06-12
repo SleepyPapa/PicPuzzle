@@ -11,5 +11,7 @@
 
 @interface GJLSetupViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIButton *removeDataFile;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *toggleTypeOfPuzzle;
+@property BOOL isPlainPuzzle;
 
 @end
