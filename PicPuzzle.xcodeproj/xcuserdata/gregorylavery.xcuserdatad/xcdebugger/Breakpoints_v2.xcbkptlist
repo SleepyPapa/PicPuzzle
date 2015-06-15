@@ -630,7 +630,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PicPuzzle/GJLViewController.m"
@@ -714,11 +714,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PicPuzzle/GJLViewController.m"
-            timestampString = "455741977.43298"
+            timestampString = "456096704.989511"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "457"
-            endingLineNumber = "457"
+            startingLineNumber = "530"
+            endingLineNumber = "530"
             landmarkName = "-setUpAllTheLocations"
             landmarkType = "5">
          </BreakpointContent>
@@ -730,11 +730,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PicPuzzle/GJLViewController.m"
-            timestampString = "455741977.43298"
+            timestampString = "456079682.761085"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "359"
-            endingLineNumber = "359"
+            startingLineNumber = "361"
+            endingLineNumber = "361"
             landmarkName = "-setUpAllTheLocations"
             landmarkType = "5">
          </BreakpointContent>
@@ -746,11 +746,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PicPuzzle/GJLViewController.m"
-            timestampString = "455741977.43298"
+            timestampString = "456096704.989511"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "419"
-            endingLineNumber = "419"
+            startingLineNumber = "493"
+            endingLineNumber = "493"
             landmarkName = "-setUpAllTheLocations"
             landmarkType = "5">
          </BreakpointContent>
@@ -762,11 +762,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PicPuzzle/GJLViewController.m"
-            timestampString = "455741977.43298"
+            timestampString = "456096704.989511"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "420"
-            endingLineNumber = "420"
+            startingLineNumber = "494"
+            endingLineNumber = "494"
             landmarkName = "-setUpAllTheLocations"
             landmarkType = "5">
          </BreakpointContent>
@@ -822,7 +822,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PicPuzzle/GJLSetupViewController.m"
@@ -832,6 +832,22 @@
             startingLineNumber = "75"
             endingLineNumber = "75"
             landmarkName = "-toggleTypeOfPuzzle:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PicPuzzle/GJLViewController.m"
+            timestampString = "456096635.575947"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "422"
+            endingLineNumber = "422"
+            landmarkName = "-setUpAllTheLocations"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

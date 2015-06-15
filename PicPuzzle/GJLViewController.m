@@ -355,11 +355,13 @@
     //load in previous data if already there
     BOOL loadedFileCorrectly = FALSE;
     loadedFileCorrectly = [self loadTheTiles];
-//    loadedFileCorrectly=FALSE;
+
+    //hardcoded
+    loadedFileCorrectly = FALSE;
     if (!loadedFileCorrectly){
         for (NSInteger i = 1; i < (totalNumberOfTiles+1); i++)
         {
-            NSString *fileName;
+         /*   NSString *fileName;
             if (i%2==0)
                 fileName= @"red.png";
             else
@@ -404,6 +406,78 @@
             [self.view addSubview:individualTile];
             self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
             ;
+          */
+            CGFloat adjustForHeight;
+            CGFloat adjustForWidth;
+            
+            
+            UIImage *mainImage;
+            NSString *filename;
+            filename= @"RYAN.JPG";
+            mainImage = [UIImage imageNamed:filename];
+           
+            adjustForHeight = (mainImage.size.height/self.view.bounds.size.height);
+            adjustForWidth = (mainImage.size.width/self.view.bounds.size.width);
+            
+            NSValue *tempValue = [_storedLocations objectAtIndex:(i)]; //extracts location of centre of tile
+            //find corresponding location in mainImage
+            CGPoint cutOrigin = [tempValue CGPointValue];
+            cutOrigin.x=((cutOrigin.x-xUnits/2)*adjustForWidth);
+            cutOrigin.y=((cutOrigin.y-yUnits/2)*adjustForHeight);
+            
+            CGPoint cutExtent = cutOrigin;
+            cutExtent.x = xUnits*adjustForWidth;
+            cutExtent.y = yUnits*adjustForHeight;
+
+            //get mainImage data resized
+            CGImageRef temporaryImageReference = mainImage.CGImage;
+            CGImageRef cutImageReference = CGImageCreateWithImageInRect(temporaryImageReference, CGRectMake(cutOrigin.x, cutOrigin.y, cutExtent.x, cutExtent.y));
+            UIImage *cutImage = [UIImage imageWithCGImage:cutImageReference];
+            CGImageRelease(cutImageReference);
+            
+            GJLTileButton *individualTile = [GJLTileButton button];
+            
+            if (i==totalNumberOfTiles){
+                filename =@"white.png";
+                UIImage * blankImage;
+                blankImage = [UIImage imageNamed:filename];
+
+            [individualTile setBackgroundImage:blankImage forState:UIControlStateNormal];
+            }
+            else
+            {
+            [individualTile setBackgroundImage:cutImage forState:UIControlStateNormal];
+            }
+            // individualTile.adjustsImageWhenHighlighted=YES;
+            
+            individualTile.titleLabel.font = [UIFont boldSystemFontOfSize:12.0f];
+            NSString *tileUIName =[NSString stringWithFormat:@"%ld",(i)];
+            [individualTile setTitle:tileUIName forState:UIControlStateNormal];
+
+            individualTile.center = [tempValue CGPointValue];
+            individualTile.bounds = CGRectMake(0,0, xUnits,yUnits);
+            individualTile.frame = CGRectMake(0,0, xUnits,yUnits);
+            NSString *locationName = [NSString stringWithFormat:@"%ld",(i)];
+            
+            individualTile.tileName=locationName;
+            [_whereInGrid addObject:locationName];
+            individualTile.tag = i;
+            NSLog(@"tag is %ld",i);
+            individualTile.contentMode = UIViewContentModeScaleAspectFit;
+            
+            individualTile.userInteractionEnabled=YES;
+            if (i==(totalNumberOfTiles)){
+                individualTile.tileName=@"blank";
+                [_whereInGrid replaceObjectAtIndex:(i) withObject:@"blank"];
+                [individualTile setTitle:@"" forState:UIControlStateNormal];
+            }
+            
+            
+            [individualTile addTarget:self action:@selector(pushed:) forControlEvents: UIControlEventTouchUpInside];
+            [self.view addSubview:individualTile];
+            self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
+            ;
+            
         }
     }
     else {
@@ -419,7 +493,6 @@
                 NSLog(@"found blank \n");
                 valueToUse=totalNumberOfTiles; //This is the blank tile
             }
-//            NSLog(@"valuetoUse %ld, string %@",(long)valueToUse, actualLocationInGrid);
             if (valueToUse%2==0)
                 fileName= @"red.png";
             else
