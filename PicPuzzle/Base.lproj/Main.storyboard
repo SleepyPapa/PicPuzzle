@@ -68,7 +68,7 @@
                                         </connections>
                                     </button>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="0Sx-z2-Jcf">
-                                        <rect key="frame" x="103" y="135" width="115" height="29"/>
+                                        <rect key="frame" x="103" y="73" width="115" height="29"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <segments>
                                             <segment title="Plain"/>
@@ -78,12 +78,12 @@
                                             <action selector="toggleTypeOfPuzzle:" destination="KhU-3C-EGc" eventType="valueChanged" id="tia-lY-QYB"/>
                                         </connections>
                                     </segmentedControl>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="vgn-L4-2Vn">
-                                        <rect key="frame" x="40" y="187" width="240" height="128"/>
+                                    <imageView userInteractionEnabled="NO" alpha="0.49999999999999961" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RYAN.JPG" id="vgn-L4-2Vn">
+                                        <rect key="frame" x="63" y="109" width="195" height="179"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="qTl-3D-TxA">
-                                        <rect key="frame" x="139" y="323" width="53" height="30"/>
+                                    <button hidden="YES" opaque="NO" tag="200" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="qTl-3D-TxA">
+                                        <rect key="frame" x="134" y="296" width="53" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Choose">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -184,6 +184,9 @@
             <point key="canvasLocation" x="-737" y="48"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="RYAN.JPG" width="2448" height="3264"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

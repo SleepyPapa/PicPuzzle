@@ -18,7 +18,11 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        UIImage *standardImage;
+        NSString *filename;
+        filename= @"RYAN.JPG";
+        standardImage = [UIImage imageNamed:filename];
+        _imageView.image=standardImage;
     }
     return self;
 }
@@ -28,13 +32,13 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     GJLViewController *vc = [segue destinationViewController];
-
- 
+    
+    
     
     if ([segue.identifier isEqualToString:@"simple"]) {
-         [vc setNumberOfTilesWidth:3];
-         [vc setNumberOfTilesHeight:3];
-         [vc setIsPlain:_isPlainPuzzle];
+        [vc setNumberOfTilesWidth:3];
+        [vc setNumberOfTilesHeight:3];
+        [vc setIsPlain:_isPlainPuzzle];
         [vc setImageToUse:_imageView.image];
     }
     if ([segue.identifier isEqualToString:@"medium"]) {
@@ -65,7 +69,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    // Do any additional setup after loading the view.
     _isPlainPuzzle = TRUE;
 }
 
@@ -76,15 +80,28 @@
 }
 
 -(IBAction)toggleTypeOfPuzzle:(UISegmentedControl *)segmentedButton {
-        if (segmentedButton.selectedSegmentIndex==0){
-        _isPlainPuzzle = TRUE;
-        }
-        else
-        {
-        _isPlainPuzzle = FALSE;
-
+    if (segmentedButton.selectedSegmentIndex==0){
+        UIView *chooseImageView = [self.view viewWithTag:(200)];
+        
+        if ([chooseImageView isKindOfClass:[UIButton class]]) {
+            chooseImageView.hidden = YES;
+            _isPlainPuzzle = TRUE;
+            _imageView.alpha=0.5;
+            
         }
     }
+    else
+    {
+        UIView *chooseImageView = [self.view viewWithTag:(200)];
+        
+        if ([chooseImageView isKindOfClass:[UIButton class]]) {
+            chooseImageView.hidden = NO;
+            _isPlainPuzzle = FALSE;
+            _imageView.alpha=1.0;
+            
+        }
+    }
+}
 
 
 -(IBAction)removeDataFile:(id)sender{
@@ -99,6 +116,11 @@
             NSLog(@"Error deleting! %@", error );
             //TODO: Handle/Log error
         }
+        UIImage *standardImage;
+        NSString *filename;
+        filename= @"RYAN.JPG";
+        standardImage = [UIImage imageNamed:filename];
+        _imageView.image=standardImage;
     }
 }
 - (IBAction)choosePhoto:(id)sender {

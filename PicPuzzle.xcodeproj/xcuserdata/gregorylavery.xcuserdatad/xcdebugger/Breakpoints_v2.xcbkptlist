@@ -826,11 +826,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PicPuzzle/GJLSetupViewController.m"
-            timestampString = "456175044.926633"
+            timestampString = "456186172.281857"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
             landmarkName = "-toggleTypeOfPuzzle:"
             landmarkType = "5">
          </BreakpointContent>
@@ -906,12 +906,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PicPuzzle/GJLSetupViewController.m"
-            timestampString = "456175044.926633"
+            timestampString = "456186172.281857"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
             landmarkName = "-imagePickerController:didFinishPickingMediaWithInfo:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PicPuzzle/GJLViewController.m"
+            timestampString = "456186783.773553"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "470"
+            endingLineNumber = "470"
+            landmarkName = "-setUpAllTheLocations"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

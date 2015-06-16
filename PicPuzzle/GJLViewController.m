@@ -169,10 +169,10 @@
         for (int loop = 1;loop<9;loop++)
         {
             [_allDataToBeStored addObject:[NSString stringWithFormat:@"%d",(loop)]];
-            //            _whereInGrid[loop]=_allDataToBeStored[loop];
+            _whereInGrid[loop]=_allDataToBeStored[loop];
         }
         
-        //        [_whereInGrid addObject:@"blank"]; //defaults to 3x3 game
+        [_whereInGrid addObject:@"blank"]; //defaults to 3x3 game
         [_allDataToBeStored addObject:@"blank"]; //defaults to 3x3 game
         
         for (int loop = 1;loop<16;loop++)
