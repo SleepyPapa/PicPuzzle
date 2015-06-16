@@ -17,6 +17,7 @@
 @property NSInteger numberOfTilesWidth;
 @property NSInteger numberOfTilesHeight;
 @property NSInteger numberOfMoves;
+@property UIImage* imageToUse;
 @property BOOL isPlain;
 @property (weak, nonatomic) IBOutlet UIButton *resetTheData;
 

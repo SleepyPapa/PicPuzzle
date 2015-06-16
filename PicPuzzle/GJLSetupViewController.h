@@ -9,9 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "GJLViewController.h"
 
-@interface GJLSetupViewController : UIViewController
+@interface GJLSetupViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *removeDataFile;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *toggleTypeOfPuzzle;
 @property BOOL isPlainPuzzle;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+- (IBAction)choosePhoto:(id)sender;
 
 @end

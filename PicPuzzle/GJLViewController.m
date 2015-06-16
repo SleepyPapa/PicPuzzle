@@ -320,7 +320,13 @@
     UIImage *mainImage;
     NSString *filename;
     filename= @"RYAN.JPG";
-    mainImage = [UIImage imageNamed:filename];
+    if (!_imageToUse){
+        filename= @"RYAN.JPG";
+        mainImage = [UIImage imageNamed:filename];
+    }
+    else{
+        mainImage=_imageToUse;
+    }
     
     adjustForHeight = (mainImage.size.height/self.view.bounds.size.height);
     adjustForWidth = (mainImage.size.width/self.view.bounds.size.width);

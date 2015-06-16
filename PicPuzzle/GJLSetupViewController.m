@@ -35,21 +35,25 @@
          [vc setNumberOfTilesWidth:3];
          [vc setNumberOfTilesHeight:3];
          [vc setIsPlain:_isPlainPuzzle];
+        [vc setImageToUse:_imageView.image];
     }
     if ([segue.identifier isEqualToString:@"medium"]) {
         [vc setNumberOfTilesWidth:4];
         [vc setNumberOfTilesHeight:4];
         [vc setIsPlain:_isPlainPuzzle];
+        [vc setImageToUse:_imageView.image];
     }
     if ([segue.identifier isEqualToString:@"hard"]) {
         [vc setNumberOfTilesWidth:5];
         [vc setNumberOfTilesHeight:5];
         [vc setIsPlain:_isPlainPuzzle];
+        [vc setImageToUse:_imageView.image];
     }
     if ([segue.identifier isEqualToString:@"crazy"]) {
         [vc setNumberOfTilesWidth:6];
         [vc setNumberOfTilesHeight:10];
         [vc setIsPlain:_isPlainPuzzle];
+        [vc setImageToUse:_imageView.image];
     }
 }
 
@@ -97,4 +101,28 @@
         }
     }
 }
+- (IBAction)choosePhoto:(id)sender {
+    
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    
+    [self presentViewController:picker animated:YES completion:NULL];
+}
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    
+    UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
+    self.imageView.image = chosenImage;
+    
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+    
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+    
+}
+
 @end
