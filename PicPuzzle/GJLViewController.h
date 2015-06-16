@@ -26,6 +26,7 @@
 -(void) saveTheTiles;
 -(void) redrawOfTiles;
 -(void) updateCounter;
+-(UIImage *)getTheTileImage :(NSInteger)tileName :(CGFloat)xUnits :(CGFloat)yUnits;
 
 
 @end

@@ -26,8 +26,8 @@
             firstRandomValue=_numberOfTilesWidth*_numberOfTilesHeight;
         if (secondRandomValue==0)
             secondRandomValue=_numberOfTilesWidth*_numberOfTilesHeight;
-            
-            //swap around tileGridLocation names
+        
+        //swap around tileGridLocation names
         
         NSString *tempStringOne = _whereInGrid[firstRandomValue];
         NSString *tempStringTwo = _whereInGrid[secondRandomValue];
@@ -42,18 +42,18 @@
     [self redrawOfTiles];
 }
 - (IBAction)resetTheData:(id)sender {
-        
+    
     NSInteger fullArray = _numberOfTilesWidth*_numberOfTilesHeight;
     [_whereInGrid removeAllObjects];
     _whereInGrid[0] = [NSString stringWithFormat:@"ignore"];
-
+    
     for (NSInteger i=1;i<(fullArray+1) ;i++){
         NSString *locationName = [NSString stringWithFormat:@"%ld",(i)];
         
-            _whereInGrid[i]=locationName;
-        }
-
-//    _whereInGrid[fullArray] = @"blank";
+        _whereInGrid[i]=locationName;
+    }
+    
+    //    _whereInGrid[fullArray] = @"blank";
     [_whereInGrid replaceObjectAtIndex:(fullArray) withObject:@"blank"];
     _numberOfMoves=0; //reset the counter
     [self updateCounter];
@@ -67,14 +67,14 @@
     // find index of blank tile
     NSInteger indexOfBlank = [_whereInGrid indexOfObject:@"blank"]; //finds where in _whereInGrid the blank tile is
     
-
+    
     NSString *tempString =[@(aButton.tag) stringValue];
     
     NSInteger indexToMoveTo = [_whereInGrid indexOfObject:tempString];
-
+    
     if (indexOfBlank == indexToMoveTo)
         return; //clicked on blank tile
-
+    
     BOOL sameColumn = false;
     BOOL fourDifferent = false;
     BOOL leftEdge = false;
@@ -107,10 +107,10 @@
     
     //move tile
     //need to swap blank with clicked tile
-//    NSLog((@"swapping %ld with %ld"), (long)indexOfBlank, (long)indexToMoveTo);
+    //    NSLog((@"swapping %ld with %ld"), (long)indexOfBlank, (long)indexToMoveTo);
     
     UIView *blankTile = [self.view viewWithTag:(_numberOfTilesWidth*_numberOfTilesHeight)]; //Blank is always last
-
+    
     
     
     NSValue *tempLocationOne=[_storedLocations objectAtIndex:(indexOfBlank)];
@@ -121,7 +121,7 @@
         aButton.layer.zPosition = MAXFLOAT;
         aButton.center=[tempLocationOne CGPointValue];
     }];
-
+    
     //move the current tile to blank location
     _whereInGrid[indexToMoveTo] = @"blank";
     _whereInGrid[indexOfBlank] = tempString;
@@ -139,7 +139,7 @@
         CGFloat centreY = numberOfMovesView.center.y;
         [numberOfMovesView removeFromSuperview];
         NSString* newNumberOfMovesLabel = [NSString stringWithFormat:@"Number of Moves: %ld",(long)_numberOfMoves ];
-        UILabel *newLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,0,176,21)];
+        UILabel *newLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,0,228,21)];
         newLabel.tag=2000;
         newLabel.text = newNumberOfMovesLabel;
         newLabel.center=CGPointMake(centreX,centreY);
@@ -158,9 +158,9 @@
     NSString *documentsDirectory = [filePaths objectAtIndex:0];
     NSString *path = [documentsDirectory stringByAppendingPathComponent:myFile];
     NSMutableArray *tempGrid = [NSMutableArray arrayWithContentsOfFile:path];
- 
+    
     if (tempGrid==nil){
-    //Load of file has failed, create default data
+        //Load of file has failed, create default data
         NSLog(@"recreating data file");
         [_allDataToBeStored removeAllObjects];
         [_allDataToBeStored addObject:@"ignore"]; //Puts in ignore
@@ -169,10 +169,10 @@
         for (int loop = 1;loop<9;loop++)
         {
             [_allDataToBeStored addObject:[NSString stringWithFormat:@"%d",(loop)]];
-//            _whereInGrid[loop]=_allDataToBeStored[loop];
+            //            _whereInGrid[loop]=_allDataToBeStored[loop];
         }
         
-//        [_whereInGrid addObject:@"blank"]; //defaults to 3x3 game
+        //        [_whereInGrid addObject:@"blank"]; //defaults to 3x3 game
         [_allDataToBeStored addObject:@"blank"]; //defaults to 3x3 game
         
         for (int loop = 1;loop<16;loop++)
@@ -198,26 +198,26 @@
         NSInteger totalInTempGrid = tempGrid.count;
         for (int i=0;i<(totalInTempGrid);i++){
             _allDataToBeStored[i]=tempGrid[i];
-
+            
         }
-    
-    //copy from _whereInGrid to _allDataToBeStored
-    
-    NSInteger totalTiles = _numberOfTilesHeight*_numberOfTilesWidth;
-    NSInteger offset = 0;
-    if (totalTiles==9)
-        offset=0;
-    else if (totalTiles==16)
-        offset=9;
-    else if (totalTiles==25)
-        offset=25;
-    else
-        offset=50;
-
-    _whereInGrid[0]=tempGrid[0]; //Get the type of game
-    
-    for (int i=1;i<((_numberOfTilesWidth*_numberOfTilesHeight)+1);i++){
-        _whereInGrid[i]=_allDataToBeStored[i+offset];
+        
+        //copy from _whereInGrid to _allDataToBeStored
+        
+        NSInteger totalTiles = _numberOfTilesHeight*_numberOfTilesWidth;
+        NSInteger offset = 0;
+        if (totalTiles==9)
+            offset=0;
+        else if (totalTiles==16)
+            offset=9;
+        else if (totalTiles==25)
+            offset=25;
+        else
+            offset=50;
+        
+        _whereInGrid[0]=tempGrid[0]; //Get the type of game
+        
+        for (int i=1;i<((_numberOfTilesWidth*_numberOfTilesHeight)+1);i++){
+            _whereInGrid[i]=_allDataToBeStored[i+offset];
         }
     }
     return loadedFromDataFile;  //Game data loaded from storage, not generated
@@ -258,14 +258,14 @@
     BOOL didWrite = [_allDataToBeStored writeToFile:path atomically:YES];
     if (didWrite)
         NSLog(@"It saved");
-
+    
 }
 
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     [self setUpAllTheLocations];
     
 }
@@ -273,23 +273,23 @@
 - (void) redrawOfTiles {
     for (int t=1;t<=(_numberOfTilesWidth*_numberOfTilesHeight);t++)
     {
-    NSString *actualLocationInGrid = _whereInGrid[t];
-    NSInteger valueToUse = [actualLocationInGrid intValue];
-    if (!valueToUse)
-        valueToUse=(_numberOfTilesWidth*_numberOfTilesHeight);
-    
-    //Update buttons - hopefully will animate them too
-    UIView *tileOne = [self.view viewWithTag:(valueToUse)];
-    NSValue *tempLocationValue=[_storedLocations objectAtIndex:(t)];
-    [UIView animateWithDuration:0.3 animations:^{
-        tileOne.center=[tempLocationValue CGPointValue];
-        }
-     ];
+        NSString *actualLocationInGrid = _whereInGrid[t];
+        NSInteger valueToUse = [actualLocationInGrid intValue];
+        if (!valueToUse)
+            valueToUse=(_numberOfTilesWidth*_numberOfTilesHeight);
+        
+        //Update buttons - hopefully will animate them too
+        UIView *tileOne = [self.view viewWithTag:(valueToUse)];
+        NSValue *tempLocationValue=[_storedLocations objectAtIndex:(t)];
+        [UIView animateWithDuration:0.3 animations:^{
+            tileOne.center=[tempLocationValue CGPointValue];
+            }
+         ];
     }
-    }
+}
 - (void) viewDidDisappear:(BOOL)animated{
     [self saveTheTiles];
-
+    
 }
 
 
@@ -312,6 +312,57 @@
 }
 
 
+-(UIImage *) getTheTileImage :(NSInteger)tileNumber :(CGFloat)xUnits  :(CGFloat) yUnits
+{
+
+    CGFloat adjustForHeight;
+    CGFloat adjustForWidth;
+    UIImage *mainImage;
+    NSString *filename;
+    filename= @"RYAN.JPG";
+    mainImage = [UIImage imageNamed:filename];
+    
+    adjustForHeight = (mainImage.size.height/self.view.bounds.size.height);
+    adjustForWidth = (mainImage.size.width/self.view.bounds.size.width);
+    
+    NSValue *tempValue = [_storedLocations objectAtIndex:(tileNumber)]; //extracts location of centre of tile
+    //find corresponding location in mainImage
+    CGPoint cutOrigin = [tempValue CGPointValue];
+    cutOrigin.x=((cutOrigin.x-xUnits/2)*adjustForWidth);
+    cutOrigin.y=((cutOrigin.y-yUnits/2)*adjustForHeight);
+    
+    CGPoint cutExtent = cutOrigin;
+    cutExtent.x = xUnits*adjustForWidth;
+    cutExtent.y = yUnits*adjustForHeight;
+    
+    double (^rad)(double) = ^(double deg) {
+        return deg / 180.0 * M_PI;
+    };
+    
+    CGAffineTransform rectTransform;
+    switch (mainImage.imageOrientation) {
+        case UIImageOrientationLeft:
+            rectTransform = CGAffineTransformTranslate(CGAffineTransformMakeRotation(rad(90)), 0, -mainImage.size.height);
+            break;
+        case UIImageOrientationRight:
+            rectTransform = CGAffineTransformTranslate(CGAffineTransformMakeRotation(rad(-90)), -mainImage.size.width, 0);
+            break;
+        case UIImageOrientationDown:
+            rectTransform = CGAffineTransformTranslate(CGAffineTransformMakeRotation(rad(-180)), -mainImage.size.width, -mainImage.size.height);
+            break;
+        default:
+            rectTransform = CGAffineTransformIdentity;
+    };
+    rectTransform = CGAffineTransformScale(rectTransform, mainImage.scale, mainImage.scale);
+    
+    //get mainImage data resized
+    CGImageRef temporaryImageReference = mainImage.CGImage;
+    CGImageRef cutImageReference = CGImageCreateWithImageInRect(temporaryImageReference,CGRectApplyAffineTransform (CGRectMake(cutOrigin.x, cutOrigin.y, cutExtent.x, cutExtent.y),rectTransform));
+    UIImage *cutImage = [UIImage imageWithCGImage:cutImageReference scale:mainImage.scale orientation:mainImage.imageOrientation];
+    CGImageRelease(cutImageReference);
+    return cutImage;
+}
+
 -(void) setUpAllTheLocations
 {
     self.view.backgroundColor = [UIColor whiteColor];
@@ -325,9 +376,8 @@
     NSInteger numberInGridHeight = _numberOfTilesHeight;
     
     NSInteger totalNumberOfTiles = numberInGridWidth*numberInGridHeight; // number of tiles to add
-
-    //    [_whereInGrid addObject:[NSString stringWithFormat:@"%ld",(totalNumberOfTiles)]]; //fill up the zero location in array with the type of the game
-        [_whereInGrid addObject:[NSString stringWithFormat:@"ignore"]]; //fill up the zero location in array with blank data
+    
+    [_whereInGrid addObject:[NSString stringWithFormat:@"ignore"]]; //fill up the zero location in array with blank data
     
     CGSize insetSize = CGRectInset(self.view.bounds, 10, 80).size;
     CGFloat xUnits = (insetSize.width/numberInGridWidth);
@@ -355,105 +405,33 @@
     //load in previous data if already there
     BOOL loadedFileCorrectly = FALSE;
     loadedFileCorrectly = [self loadTheTiles];
-
-    //hardcoded
-    loadedFileCorrectly = FALSE;
-    if (!loadedFileCorrectly){
+    if(!loadedFileCorrectly)
+        NSLog(@"Problem with loading, using generated file");
+    
+    if (!_isPlain){
         for (NSInteger i = 1; i < (totalNumberOfTiles+1); i++)
         {
-         /*   NSString *fileName;
-            if (i%2==0)
-                fileName= @"red.png";
-            else
-                fileName= @"black.png";
-            UIImage *toLoad;
-            if (i!=(totalNumberOfTiles))
-                toLoad = [UIImage imageNamed:fileName];
-            else {
-                toLoad = [UIImage imageNamed:@"white.png"];
-            }
 
-            GJLTileButton *individualTile = [GJLTileButton button];
-            
-            [individualTile setBackgroundImage:toLoad forState:UIControlStateNormal];
-            
-           // individualTile.adjustsImageWhenHighlighted=YES;
-            
-            individualTile.titleLabel.font = [UIFont boldSystemFontOfSize:12.0f];
-            NSString *tileUIName =[NSString stringWithFormat:@"%ld",(i)];
-            [individualTile setTitle:tileUIName forState:UIControlStateNormal];
-            NSValue *tempValue = [_storedLocations objectAtIndex:(i)];
-            individualTile.center = [tempValue CGPointValue];
-            individualTile.bounds = CGRectMake(0,0, xUnits,yUnits);
-            individualTile.frame = CGRectMake(0,0, xUnits,yUnits);
-            NSString *locationName = [NSString stringWithFormat:@"%ld",(i)];
-            
-            individualTile.tileName=locationName;
-            [_whereInGrid addObject:locationName];
-            individualTile.tag = i;
-            NSLog(@"tag is %ld",i);
-            individualTile.contentMode = UIViewContentModeScaleAspectFit;
-            
-            individualTile.userInteractionEnabled=YES;
-            if (i==(totalNumberOfTiles)){
-                individualTile.tileName=@"blank";
-                [_whereInGrid replaceObjectAtIndex:(i) withObject:@"blank"];
-                [individualTile setTitle:@"" forState:UIControlStateNormal];
-            }
-            
-            
-            [individualTile addTarget:self action:@selector(pushed:) forControlEvents: UIControlEventTouchUpInside];
-            [self.view addSubview:individualTile];
-            self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
-            ;
-          */
-            CGFloat adjustForHeight;
-            CGFloat adjustForWidth;
-            
-            
-            UIImage *mainImage;
-            NSString *filename;
-            filename= @"RYAN.JPG";
-            mainImage = [UIImage imageNamed:filename];
-           
-            adjustForHeight = (mainImage.size.height/self.view.bounds.size.height);
-            adjustForWidth = (mainImage.size.width/self.view.bounds.size.width);
-            
-            NSValue *tempValue = [_storedLocations objectAtIndex:(i)]; //extracts location of centre of tile
-            //find corresponding location in mainImage
-            CGPoint cutOrigin = [tempValue CGPointValue];
-            cutOrigin.x=((cutOrigin.x-xUnits/2)*adjustForWidth);
-            cutOrigin.y=((cutOrigin.y-yUnits/2)*adjustForHeight);
-            
-            CGPoint cutExtent = cutOrigin;
-            cutExtent.x = xUnits*adjustForWidth;
-            cutExtent.y = yUnits*adjustForHeight;
-
-            //get mainImage data resized
-            CGImageRef temporaryImageReference = mainImage.CGImage;
-            CGImageRef cutImageReference = CGImageCreateWithImageInRect(temporaryImageReference, CGRectMake(cutOrigin.x, cutOrigin.y, cutExtent.x, cutExtent.y));
-            UIImage *cutImage = [UIImage imageWithCGImage:cutImageReference];
-            CGImageRelease(cutImageReference);
+            UIImage *cutImage = [self getTheTileImage:i :xUnits :yUnits];
             
             GJLTileButton *individualTile = [GJLTileButton button];
             
             if (i==totalNumberOfTiles){
-                filename =@"white.png";
                 UIImage * blankImage;
-                blankImage = [UIImage imageNamed:filename];
-
-            [individualTile setBackgroundImage:blankImage forState:UIControlStateNormal];
+                blankImage = [UIImage imageNamed:@"white.png"];
+                
+                [individualTile setBackgroundImage:blankImage forState:UIControlStateNormal];
             }
             else
             {
-            [individualTile setBackgroundImage:cutImage forState:UIControlStateNormal];
+                [individualTile setBackgroundImage:cutImage forState:UIControlStateNormal];
             }
-            // individualTile.adjustsImageWhenHighlighted=YES;
-            
+
             individualTile.titleLabel.font = [UIFont boldSystemFontOfSize:12.0f];
             NSString *tileUIName =[NSString stringWithFormat:@"%ld",(i)];
             [individualTile setTitle:tileUIName forState:UIControlStateNormal];
-
+            NSValue *tempValue = [_storedLocations objectAtIndex:(i)]; //extracts location of centre of tile
+            
             individualTile.center = [tempValue CGPointValue];
             individualTile.bounds = CGRectMake(0,0, xUnits,yUnits);
             individualTile.frame = CGRectMake(0,0, xUnits,yUnits);
@@ -468,16 +446,13 @@
             individualTile.userInteractionEnabled=YES;
             if (i==(totalNumberOfTiles)){
                 individualTile.tileName=@"blank";
-                [_whereInGrid replaceObjectAtIndex:(i) withObject:@"blank"];
                 [individualTile setTitle:@"" forState:UIControlStateNormal];
             }
             
             
             [individualTile addTarget:self action:@selector(pushed:) forControlEvents: UIControlEventTouchUpInside];
             [self.view addSubview:individualTile];
-            self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
-            ;
-            
+           
         }
     }
     else {
@@ -503,14 +478,7 @@
             else {
                 toLoad = [UIImage imageNamed:@"white.png"];
             }
-            
-            NSInteger columns = (numberInGridWidth%valueToUse);
-            
-            NSInteger rows = valueToUse/numberInGridHeight;
 
-            positionX = (xUnits*(columns))+(xUnits/2);
-            positionY = (yUnits*rows)+(yUnits/2);
-            
             GJLTileButton *individualTile = [GJLTileButton button];
             [individualTile setBackgroundImage:toLoad forState:UIControlStateNormal];
             individualTile.titleLabel.font = [UIFont boldSystemFontOfSize:12.0f];
@@ -521,7 +489,7 @@
             individualTile.frame = CGRectMake(0,0,xUnits,yUnits);
             individualTile.tag = valueToUse;
             individualTile.userInteractionEnabled=YES;
-
+            
             
             [individualTile addTarget:self action:@selector(pushed:) forControlEvents: UIControlEventTouchUpInside];
             [self.view addSubview:individualTile];
