@@ -283,7 +283,7 @@
         NSValue *tempLocationValue=[_storedLocations objectAtIndex:(t)];
         [UIView animateWithDuration:0.3 animations:^{
             tileOne.center=[tempLocationValue CGPointValue];
-            }
+        }
          ];
     }
 }
@@ -314,7 +314,7 @@
 
 -(UIImage *) getTheTileImage :(NSInteger)tileNumber :(CGFloat)xUnits  :(CGFloat) yUnits
 {
-
+    
     CGFloat adjustForHeight;
     CGFloat adjustForWidth;
     UIImage *mainImage;
@@ -327,19 +327,28 @@
     else{
         mainImage=_imageToUse;
     }
-    
-    adjustForHeight = (mainImage.size.height/self.view.bounds.size.height);
-    adjustForWidth = (mainImage.size.width/self.view.bounds.size.width);
-    
+    CGFloat pointsToPixels;
+    if (mainImage.size.width>mainImage.size.height)
+        {
+            //Landscape
+            pointsToPixels = (mainImage.size.width/self.view.bounds.size.width);
+        }
+        else{
+            //Portrait
+            pointsToPixels = (mainImage.size.height/self.view.bounds.size.height);
+        }
+
+
     NSValue *tempValue = [_storedLocations objectAtIndex:(tileNumber)]; //extracts location of centre of tile
     //find corresponding location in mainImage
     CGPoint cutOrigin = [tempValue CGPointValue];
-    cutOrigin.x=((cutOrigin.x-xUnits/2)*adjustForWidth);
-    cutOrigin.y=((cutOrigin.y-yUnits/2)*adjustForHeight);
-    
     CGPoint cutExtent = cutOrigin;
-    cutExtent.x = xUnits*adjustForWidth;
-    cutExtent.y = yUnits*adjustForHeight;
+
+    cutOrigin.x=((cutOrigin.x-xUnits/2)*pointsToPixels);
+    cutOrigin.y=((cutOrigin.y-yUnits/2)*pointsToPixels);
+    
+    cutExtent.x = xUnits*pointsToPixels;
+    cutExtent.y = yUnits*pointsToPixels;
     
     double (^rad)(double) = ^(double deg) {
         return deg / 180.0 * M_PI;
@@ -384,14 +393,38 @@
     NSInteger totalNumberOfTiles = numberInGridWidth*numberInGridHeight; // number of tiles to add
     
     [_whereInGrid addObject:[NSString stringWithFormat:@"ignore"]]; //fill up the zero location in array with blank data
-    
+
     CGSize insetSize = CGRectInset(self.view.bounds, 10, 80).size;
+    NSLog(@"height %f",insetSize.height);
+    NSLog(@"width %f",insetSize.width);
+    NSLog(@"image height %f",_imageToUse.size.height);
+    NSLog(@"image width %f",_imageToUse.size.width);
+
+    //adjust insetSize if necessary for dimension of picture being used
+    if (_imageToUse)
+    {
+        CGFloat adjustment =_imageToUse.size.width/_imageToUse.size.height;
+        if (_imageToUse.size.width>_imageToUse.size.height)
+        {
+        //Landscape
+            insetSize.height=insetSize.height*(insetSize.width/_imageToUse.size.width);
+        }
+        else{
+        //Portrait
+            insetSize.width=insetSize.width/adjustment;
+        }
+    }
+    NSLog(@"height %f",insetSize.height);
+    NSLog(@"width %f",insetSize.width);
     CGFloat xUnits = (insetSize.width/numberInGridWidth);
     CGFloat yUnits = (insetSize.height/numberInGridHeight);
     
     CGFloat positionX = 0.0f;
     CGFloat positionY = 0.0f;
     int rowNumber=0;
+    
+
+    
     
     CGPoint firstPosition = CGPointMake(positionX,positionY);
     [_storedLocations addObject:[NSValue valueWithCGPoint:firstPosition]];
@@ -417,7 +450,7 @@
     if (!_isPlain){
         for (NSInteger i = 1; i < (totalNumberOfTiles+1); i++)
         {
-
+            
             UIImage *cutImage = [self getTheTileImage:i :xUnits :yUnits];
             
             GJLTileButton *individualTile = [GJLTileButton button];
@@ -432,7 +465,7 @@
             {
                 [individualTile setBackgroundImage:cutImage forState:UIControlStateNormal];
             }
-
+            
             individualTile.titleLabel.font = [UIFont boldSystemFontOfSize:12.0f];
             NSString *tileUIName =[NSString stringWithFormat:@"%ld",(i)];
             [individualTile setTitle:tileUIName forState:UIControlStateNormal];
@@ -446,7 +479,7 @@
             individualTile.tileName=locationName;
             [_whereInGrid addObject:locationName];
             individualTile.tag = i;
-            NSLog(@"tag is %ld",i);
+//            NSLog(@"tag is %ld",i);
             individualTile.contentMode = UIViewContentModeScaleAspectFit;
             
             individualTile.userInteractionEnabled=YES;
@@ -458,7 +491,7 @@
             
             [individualTile addTarget:self action:@selector(pushed:) forControlEvents: UIControlEventTouchUpInside];
             [self.view addSubview:individualTile];
-           
+            
         }
     }
     else {
@@ -484,7 +517,7 @@
             else {
                 toLoad = [UIImage imageNamed:@"white.png"];
             }
-
+            
             GJLTileButton *individualTile = [GJLTileButton button];
             [individualTile setBackgroundImage:toLoad forState:UIControlStateNormal];
             individualTile.titleLabel.font = [UIFont boldSystemFontOfSize:12.0f];

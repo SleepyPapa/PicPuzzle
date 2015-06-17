@@ -13,7 +13,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *removeDataFile;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *toggleTypeOfPuzzle;
 @property BOOL isPlainPuzzle;
-@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIImageView *imageViewTile;
+//@property (weak, nonatomic) IBOutlet UIImageView *imageViewPicture;
 - (IBAction)choosePhoto:(id)sender;
 
 @end

@@ -18,12 +18,12 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        UIImage *standardImage;
+/*        UIImage *standardImage;
         NSString *filename;
         filename= @"RYAN.JPG";
         standardImage = [UIImage imageNamed:filename];
-        _imageView.image=standardImage;
-    }
+        _imageViewPicture.image=standardImage;
+*/    }
     return self;
 }
 
@@ -39,25 +39,25 @@
         [vc setNumberOfTilesWidth:3];
         [vc setNumberOfTilesHeight:3];
         [vc setIsPlain:_isPlainPuzzle];
-        [vc setImageToUse:_imageView.image];
+        [vc setImageToUse:_imageViewTile.image];
     }
     if ([segue.identifier isEqualToString:@"medium"]) {
         [vc setNumberOfTilesWidth:4];
         [vc setNumberOfTilesHeight:4];
         [vc setIsPlain:_isPlainPuzzle];
-        [vc setImageToUse:_imageView.image];
+        [vc setImageToUse:_imageViewTile.image];
     }
     if ([segue.identifier isEqualToString:@"hard"]) {
         [vc setNumberOfTilesWidth:5];
         [vc setNumberOfTilesHeight:5];
         [vc setIsPlain:_isPlainPuzzle];
-        [vc setImageToUse:_imageView.image];
+        [vc setImageToUse:_imageViewTile.image];
     }
     if ([segue.identifier isEqualToString:@"crazy"]) {
         [vc setNumberOfTilesWidth:6];
         [vc setNumberOfTilesHeight:10];
         [vc setIsPlain:_isPlainPuzzle];
-        [vc setImageToUse:_imageView.image];
+        [vc setImageToUse:_imageViewTile.image];
     }
 }
 
@@ -86,8 +86,9 @@
         if ([chooseImageView isKindOfClass:[UIButton class]]) {
             chooseImageView.hidden = YES;
             _isPlainPuzzle = TRUE;
-            _imageView.alpha=0.5;
-            
+            _imageViewTile.alpha=0.5;
+//            _imageViewPicture.alpha=0.5;
+
         }
     }
     else
@@ -97,7 +98,9 @@
         if ([chooseImageView isKindOfClass:[UIButton class]]) {
             chooseImageView.hidden = NO;
             _isPlainPuzzle = FALSE;
-            _imageView.alpha=1.0;
+            _imageViewTile.alpha=1.0;
+//            _imageViewPicture.alpha=1.0;
+
             
         }
     }
@@ -118,9 +121,9 @@
         }
         UIImage *standardImage;
         NSString *filename;
-        filename= @"RYAN.JPG";
+        filename= @"tiles_default.png";
         standardImage = [UIImage imageNamed:filename];
-        _imageView.image=standardImage;
+        _imageViewTile.image=standardImage;
     }
 }
 - (IBAction)choosePhoto:(id)sender {
@@ -135,7 +138,7 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
-    self.imageView.image = chosenImage;
+    self.imageViewTile.image = chosenImage;
     
     [picker dismissViewControllerAnimated:YES completion:NULL];
     

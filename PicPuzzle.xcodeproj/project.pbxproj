@@ -13,6 +13,7 @@
 		1084992A185A3FEE00831D11 /* red.png in Resources */ = {isa = PBXBuildFile; fileRef = 10849928185A3FEE00831D11 /* red.png */; };
 		1084992D185A487E00831D11 /* GJLSetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1084992C185A487E00831D11 /* GJLSetupViewController.m */; };
 		10E9E0941B2BA4B600E09E6E /* RYAN.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 10E9E0931B2BA4B600E09E6E /* RYAN.JPG */; };
+		10E9E0961B30DF7400E09E6E /* tiles_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 10E9E0951B30DF7400E09E6E /* tiles_default.png */; };
 		10EFB7D21845174200A0A5C6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10EFB7D11845174200A0A5C6 /* Foundation.framework */; };
 		10EFB7D41845174200A0A5C6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10EFB7D31845174200A0A5C6 /* CoreGraphics.framework */; };
 		10EFB7D61845174200A0A5C6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10EFB7D51845174200A0A5C6 /* UIKit.framework */; };
@@ -49,6 +50,7 @@
 		1084992B185A487E00831D11 /* GJLSetupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GJLSetupViewController.h; sourceTree = "<group>"; };
 		1084992C185A487E00831D11 /* GJLSetupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GJLSetupViewController.m; sourceTree = "<group>"; };
 		10E9E0931B2BA4B600E09E6E /* RYAN.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = RYAN.JPG; sourceTree = "<group>"; };
+		10E9E0951B30DF7400E09E6E /* tiles_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tiles_default.png; sourceTree = "<group>"; };
 		10EFB7CE1845174200A0A5C6 /* PicPuzzle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PicPuzzle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10EFB7D11845174200A0A5C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		10EFB7D31845174200A0A5C6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -147,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				10E9E0931B2BA4B600E09E6E /* RYAN.JPG */,
+				10E9E0951B30DF7400E09E6E /* tiles_default.png */,
 				10849927185A3FEE00831D11 /* black.png */,
 				10849928185A3FEE00831D11 /* red.png */,
 				10849922185A368A00831D11 /* white.png */,
@@ -255,6 +258,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				10849924185A368A00831D11 /* white.png in Resources */,
+				10E9E0961B30DF7400E09E6E /* tiles_default.png in Resources */,
 				10EFB7EA1845174200A0A5C6 /* Images.xcassets in Resources */,
 				10EFB7DC1845174200A0A5C6 /* InfoPlist.strings in Resources */,
 				10E9E0941B2BA4B600E09E6E /* RYAN.JPG in Resources */,
