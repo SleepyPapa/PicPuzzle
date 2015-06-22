@@ -382,8 +382,7 @@
     [_whereInGrid addObject:[NSString stringWithFormat:@"ignore"]]; //fill up the zero location in array with blank data
     
     CGSize insetSize = CGRectInset(self.view.bounds, 10, 80).size;
-    NSLog(@"inset.height %f inset.width %f",insetSize.height, insetSize.width);
-    
+
     //adjust insetSize if necessary for dimension of picture being used
     if (!_isPlain && _imageToUse)
     {
@@ -395,8 +394,6 @@
         }
 
     }
-    
-    NSLog(@"inset.height %f inset.width %f",insetSize.height, insetSize.width);
     
     CGFloat xUnits = (insetSize.width/numberInGridWidth);
     CGFloat yUnits = (insetSize.height/numberInGridHeight);
@@ -444,8 +441,15 @@
             NSString *tileUIName =[NSString stringWithFormat:@"%ld",(long)(i)];
             [individualTile setTitle:tileUIName forState:UIControlStateNormal];
             NSValue *tempValue = [_storedLocations objectAtIndex:(i)]; //extracts location of centre of tile
-            individualTile.center = [tempValue CGPointValue];
+            CGPoint centerOffset= [tempValue CGPointValue];
+            if (_imageToUse.size.width>=_imageToUse.size.height)
+            {
+            //Portrait
+                centerOffset.y=centerOffset.y+200;
+//                centerOffset.y=centerOffset.y+((self.view.frame.size.height-(yUnits*_numberOfTilesHeight))/2);
+            }
             individualTile.frame = CGRectMake(0,0, xUnits,yUnits);
+            individualTile.center = centerOffset;
             NSString *locationName = [NSString stringWithFormat:@"%ld",(long)(i)];
             
             individualTile.tileName=locationName;

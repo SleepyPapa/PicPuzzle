@@ -64,6 +64,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     _isPlainPuzzle = TRUE;
+    UIImage *standardImage;
+    NSString *filename;
+    filename= @"RYAN.JPG";
+    standardImage = [UIImage imageNamed:filename];
+    _imageViewTile.image=standardImage;
 }
 
 - (void)didReceiveMemoryWarning

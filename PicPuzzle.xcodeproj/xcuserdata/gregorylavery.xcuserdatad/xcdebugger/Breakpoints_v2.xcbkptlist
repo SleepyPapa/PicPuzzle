@@ -666,11 +666,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PicPuzzle/GJLViewController.m"
-            timestampString = "456688212.591424"
+            timestampString = "456691723.21751"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "433"
-            endingLineNumber = "433"
+            startingLineNumber = "426"
+            endingLineNumber = "426"
             landmarkName = "-setUpAllTheLocations"
             landmarkType = "5">
          </BreakpointContent>
@@ -682,7 +682,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PicPuzzle/GJLViewController.m"
-            timestampString = "456688212.591424"
+            timestampString = "456694358.228233"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "478"
@@ -698,7 +698,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PicPuzzle/GJLViewController.m"
-            timestampString = "456684201.016251"
+            timestampString = "456691723.21751"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "371"
@@ -746,11 +746,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PicPuzzle/GJLSetupViewController.m"
-            timestampString = "456686104.239372"
+            timestampString = "456692098.576655"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
             landmarkName = "-toggleTypeOfPuzzle:"
             landmarkType = "5">
          </BreakpointContent>
@@ -810,11 +810,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PicPuzzle/GJLSetupViewController.m"
-            timestampString = "456686907.200735"
+            timestampString = "456692098.576655"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "148"
-            endingLineNumber = "148"
+            startingLineNumber = "153"
+            endingLineNumber = "153"
             landmarkName = "-imagePickerController:didFinishPickingMediaWithInfo:"
             landmarkType = "5">
          </BreakpointContent>
@@ -826,7 +826,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PicPuzzle/GJLViewController.m"
-            timestampString = "456688212.591424"
+            timestampString = "456694358.228233"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "474"
@@ -842,11 +842,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PicPuzzle/GJLViewController.m"
-            timestampString = "456688212.591424"
+            timestampString = "456691723.21751"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "392"
-            endingLineNumber = "392"
+            startingLineNumber = "390"
+            endingLineNumber = "390"
             landmarkName = "-setUpAllTheLocations"
             landmarkType = "5">
          </BreakpointContent>
@@ -874,7 +874,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PicPuzzle/GJLViewController.m"
-            timestampString = "456684201.016251"
+            timestampString = "456691723.21751"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "359"
@@ -890,7 +890,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PicPuzzle/GJLViewController.m"
-            timestampString = "456684201.016251"
+            timestampString = "456691723.21751"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "366"
@@ -906,11 +906,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PicPuzzle/GJLViewController.m"
-            timestampString = "456688212.591424"
+            timestampString = "456691723.21751"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "408"
-            endingLineNumber = "408"
+            startingLineNumber = "401"
+            endingLineNumber = "401"
             landmarkName = "-setUpAllTheLocations"
             landmarkType = "5">
          </BreakpointContent>
@@ -938,7 +938,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PicPuzzle/GJLViewController.m"
-            timestampString = "456688212.591424"
+            timestampString = "456694358.228233"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "453"
@@ -954,11 +954,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PicPuzzle/GJLViewController.m"
-            timestampString = "456688212.591424"
+            timestampString = "456691723.21751"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "437"
-            endingLineNumber = "437"
+            startingLineNumber = "430"
+            endingLineNumber = "430"
             landmarkName = "-setUpAllTheLocations"
             landmarkType = "5">
          </BreakpointContent>
@@ -986,11 +986,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PicPuzzle/GJLViewController.m"
-            timestampString = "456688212.591424"
+            timestampString = "456691723.21751"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "428"
-            endingLineNumber = "428"
+            startingLineNumber = "421"
+            endingLineNumber = "421"
             landmarkName = "-setUpAllTheLocations"
             landmarkType = "5">
          </BreakpointContent>
@@ -1002,7 +1002,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PicPuzzle/GJLViewController.m"
-            timestampString = "456688212.591424"
+            timestampString = "456694358.228233"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "471"
@@ -1018,7 +1018,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PicPuzzle/GJLViewController.m"
-            timestampString = "456684201.016251"
+            timestampString = "456691723.21751"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "338"
@@ -1034,7 +1034,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PicPuzzle/GJLViewController.m"
-            timestampString = "456684201.016251"
+            timestampString = "456691723.21751"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "363"
@@ -1082,12 +1082,44 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PicPuzzle/GJLSetupViewController.m"
-            timestampString = "456686907.200735"
+            timestampString = "456692098.576655"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
             landmarkName = "-takePhoto:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PicPuzzle/GJLViewController.m"
+            timestampString = "456694443.338465"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "451"
+            endingLineNumber = "451"
+            landmarkName = "-setUpAllTheLocations"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PicPuzzle/GJLViewController.m"
+            timestampString = "456694665.143872"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "448"
+            endingLineNumber = "448"
+            landmarkName = "-setUpAllTheLocations"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
