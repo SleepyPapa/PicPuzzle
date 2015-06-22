@@ -14,6 +14,5 @@
 @property   NSMutableString *tileGridLocation;
 
 + (id) button;
-//+ (id) initWithPosition :position(int);
 
 @end

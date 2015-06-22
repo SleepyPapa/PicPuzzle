@@ -14,7 +14,8 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *toggleTypeOfPuzzle;
 @property BOOL isPlainPuzzle;
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewTile;
-//@property (weak, nonatomic) IBOutlet UIImageView *imageViewPicture;
+
 - (IBAction)choosePhoto:(id)sender;
+- (IBAction)takePhoto:(id)sender;
 
 @end
