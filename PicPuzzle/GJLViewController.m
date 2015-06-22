@@ -293,7 +293,7 @@
     NSString *nameOfBlank = @"blank";
     if ((allInRightLocation) && (_whereInGrid[(_numberOfTilesWidth*_numberOfTilesHeight)] == nameOfBlank)){
         
-        NSString *numberOfMoves = [NSString stringWithFormat:@"You won in %d moves", _numberOfMoves];
+        NSString *numberOfMoves = [NSString stringWithFormat:@"You won in %ld moves", (long)_numberOfMoves];
         
         UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Winner!"
                                                                        message:numberOfMoves
