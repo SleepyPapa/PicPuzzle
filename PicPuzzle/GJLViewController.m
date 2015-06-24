@@ -292,6 +292,16 @@
     }
     NSString *nameOfBlank = @"blank";
     if ((allInRightLocation) && (_whereInGrid[(_numberOfTilesWidth*_numberOfTilesHeight)] == nameOfBlank)){
+        NSString *path  = [[NSBundle mainBundle] pathForResource:@"SMALL_CROWD_APPLAUSE-Yannick_Lemieux-1268806408" ofType:@"wav"];
+        NSURL *pathURL = [NSURL fileURLWithPath : path];
+        
+        SystemSoundID audioEffect;
+        AudioServicesCreateSystemSoundID((__bridge CFURLRef) pathURL, &audioEffect);
+        AudioServicesPlaySystemSound(audioEffect);
+        // Using GCD, we can use a block to dispose of the audio effect without using a NSTimer or something else to figure out when it'll be finished playing.
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(30 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            AudioServicesDisposeSystemSoundID(audioEffect);
+        });
         
         NSString *numberOfMoves = [NSString stringWithFormat:@"You won in %ld moves", (long)_numberOfMoves];
         
@@ -478,9 +488,9 @@
                 valueToUse=totalNumberOfTiles; //This is the blank tile
             }
             if (valueToUse%2==0)
-                fileName= @"red.png";
+                fileName= @"redlarge.png";
             else
-                fileName= @"black.png";
+                fileName= @"blacklarge.png";
             UIImage *toLoad;
             if (valueToUse!=(totalNumberOfTiles))
                 toLoad = [UIImage imageNamed:fileName];

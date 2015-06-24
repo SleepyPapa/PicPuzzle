@@ -79,8 +79,12 @@
 
 -(IBAction)toggleTypeOfPuzzle:(UISegmentedControl *)segmentedButton {
     if (segmentedButton.selectedSegmentIndex==0){
-        UIView *chooseImageView = [self.view viewWithTag:(200)];
+        UIView *cameraButton = [self.view viewWithTag:(201)];
         
+        if ([cameraButton isKindOfClass:[UIButton class]]) {
+            cameraButton.hidden = YES;
+        }
+        UIView *chooseImageView = [self.view viewWithTag:(200)];
         if ([chooseImageView isKindOfClass:[UIButton class]]) {
             chooseImageView.hidden = YES;
             _isPlainPuzzle = TRUE;
@@ -89,17 +93,14 @@
     }
     else
     {
-        if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-            UIView *cameraButton = [self.view viewWithTag:(201)];
-            
-            if ([cameraButton isKindOfClass:[UIButton class]]) {
-                cameraButton.hidden = YES;
-            }
+        UIView *cameraButton = [self.view viewWithTag:(201)];
+        if ([cameraButton isKindOfClass:[UIButton class]]) {
+            cameraButton.hidden = NO;
         }
         UIView *chooseImageView = [self.view viewWithTag:(200)];
-        
         if ([chooseImageView isKindOfClass:[UIButton class]]) {
             chooseImageView.hidden = NO;
+            cameraButton.hidden = NO;
             _isPlainPuzzle = FALSE;
             _imageViewTile.alpha=1.0;
         }

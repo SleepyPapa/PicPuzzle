@@ -18,6 +18,9 @@
 		108877311B38D1B7007B77A7 /* icon180.png in Resources */ = {isa = PBXBuildFile; fileRef = 1088772E1B38D1B7007B77A7 /* icon180.png */; };
 		108877341B38D281007B77A7 /* icon58.png in Resources */ = {isa = PBXBuildFile; fileRef = 108877321B38D281007B77A7 /* icon58.png */; };
 		108877351B38D281007B77A7 /* icon80.png in Resources */ = {isa = PBXBuildFile; fileRef = 108877331B38D281007B77A7 /* icon80.png */; };
+		108877371B38D5AC007B77A7 /* redlarge.png in Resources */ = {isa = PBXBuildFile; fileRef = 108877361B38D5AC007B77A7 /* redlarge.png */; };
+		1088773B1B38D6A2007B77A7 /* blacklarge.png in Resources */ = {isa = PBXBuildFile; fileRef = 1088773A1B38D6A2007B77A7 /* blacklarge.png */; };
+		1088773D1B3A1F6D007B77A7 /* SMALL_CROWD_APPLAUSE-Yannick_Lemieux-1268806408.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1088773C1B3A1F6D007B77A7 /* SMALL_CROWD_APPLAUSE-Yannick_Lemieux-1268806408.wav */; };
 		10E9E0941B2BA4B600E09E6E /* RYAN.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 10E9E0931B2BA4B600E09E6E /* RYAN.JPG */; };
 		10E9E0961B30DF7400E09E6E /* tiles_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 10E9E0951B30DF7400E09E6E /* tiles_default.png */; };
 		10EFB7D21845174200A0A5C6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10EFB7D11845174200A0A5C6 /* Foundation.framework */; };
@@ -60,6 +63,9 @@
 		1088772E1B38D1B7007B77A7 /* icon180.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon180.png; sourceTree = "<group>"; };
 		108877321B38D281007B77A7 /* icon58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon58.png; sourceTree = "<group>"; };
 		108877331B38D281007B77A7 /* icon80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon80.png; sourceTree = "<group>"; };
+		108877361B38D5AC007B77A7 /* redlarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redlarge.png; sourceTree = "<group>"; };
+		1088773A1B38D6A2007B77A7 /* blacklarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blacklarge.png; sourceTree = "<group>"; };
+		1088773C1B3A1F6D007B77A7 /* SMALL_CROWD_APPLAUSE-Yannick_Lemieux-1268806408.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "SMALL_CROWD_APPLAUSE-Yannick_Lemieux-1268806408.wav"; sourceTree = "<group>"; };
 		10E9E0931B2BA4B600E09E6E /* RYAN.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = RYAN.JPG; sourceTree = "<group>"; };
 		10E9E0951B30DF7400E09E6E /* tiles_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tiles_default.png; sourceTree = "<group>"; };
 		10EFB7CE1845174200A0A5C6 /* PicPuzzle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PicPuzzle.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -162,8 +168,11 @@
 				10E9E0951B30DF7400E09E6E /* tiles_default.png */,
 				1088772A1B38CFE1007B77A7 /* 1136.png */,
 				10849927185A3FEE00831D11 /* black.png */,
+				1088773A1B38D6A2007B77A7 /* blacklarge.png */,
 				1088772C1B38D1B7007B77A7 /* icon120.png */,
+				1088773C1B3A1F6D007B77A7 /* SMALL_CROWD_APPLAUSE-Yannick_Lemieux-1268806408.wav */,
 				1088772D1B38D1B7007B77A7 /* icon152.png */,
+				108877361B38D5AC007B77A7 /* redlarge.png */,
 				1088772E1B38D1B7007B77A7 /* icon180.png */,
 				10849928185A3FEE00831D11 /* red.png */,
 				108877321B38D281007B77A7 /* icon58.png */,
@@ -243,6 +252,9 @@
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "Gregory Lavery";
 				TargetAttributes = {
+					10EFB7CD1845174200A0A5C6 = {
+						DevelopmentTeam = AK2R4KC4GV;
+					};
 					10EFB7EE1845174200A0A5C6 = {
 						TestTargetID = 10EFB7CD1845174200A0A5C6;
 					};
@@ -281,6 +293,9 @@
 				10EFB7EA1845174200A0A5C6 /* Images.xcassets in Resources */,
 				10EFB7DC1845174200A0A5C6 /* InfoPlist.strings in Resources */,
 				10E9E0941B2BA4B600E09E6E /* RYAN.JPG in Resources */,
+				1088773B1B38D6A2007B77A7 /* blacklarge.png in Resources */,
+				1088773D1B3A1F6D007B77A7 /* SMALL_CROWD_APPLAUSE-Yannick_Lemieux-1268806408.wav in Resources */,
+				108877371B38D5AC007B77A7 /* redlarge.png in Resources */,
 				1088772F1B38D1B7007B77A7 /* icon120.png in Resources */,
 				108877311B38D1B7007B77A7 /* icon180.png in Resources */,
 				1084992A185A3FEE00831D11 /* red.png in Resources */,
@@ -433,10 +448,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PicPuzzle/PicPuzzle-Prefix.pch";
 				INFOPLIST_FILE = "PicPuzzle/PicPuzzle-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -446,10 +464,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PicPuzzle/PicPuzzle-Prefix.pch";
 				INFOPLIST_FILE = "PicPuzzle/PicPuzzle-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

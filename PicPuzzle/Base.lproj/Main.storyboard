@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nuB-tG-5ew">
-                                        <rect key="frame" x="91" y="406" width="48" height="30"/>
+                                        <rect key="frame" x="74" y="406" width="48" height="30"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                         <size key="titleShadowOffset" width="1" height="1"/>
                                         <state key="normal" title="Simple"/>
@@ -30,7 +30,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ufD-iY-eiH">
-                                        <rect key="frame" x="163" y="406" width="56" height="30"/>
+                                        <rect key="frame" x="188" y="406" width="56" height="30"/>
                                         <state key="normal" title="Medium">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -39,7 +39,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dWr-d7-riu">
-                                        <rect key="frame" x="165" y="450" width="52" height="30"/>
+                                        <rect key="frame" x="188" y="468" width="52" height="30"/>
                                         <state key="normal" title="Difficult">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -57,7 +57,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S3f-yw-7KA">
-                                        <rect key="frame" x="98" y="450" width="34" height="30"/>
+                                        <rect key="frame" x="88" y="468" width="34" height="30"/>
                                         <state key="normal" title="Hard">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -84,15 +84,6 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button hidden="YES" opaque="NO" tag="201" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lCv-pK-wvt">
-                                        <rect key="frame" x="68" y="335" width="54" height="30"/>
-                                        <state key="normal" title="Camera">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="takePhoto:" destination="KhU-3C-EGc" eventType="touchUpInside" id="Pwe-8K-tFd"/>
-                                        </connections>
-                                    </button>
                                     <button hidden="YES" opaque="NO" tag="200" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qTl-3D-TxA">
                                         <rect key="frame" x="188" y="328" width="115" height="44"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -101,6 +92,15 @@
                                         </state>
                                         <connections>
                                             <action selector="choosePhoto:" destination="KhU-3C-EGc" eventType="touchUpInside" id="DSr-Vv-ARb"/>
+                                        </connections>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" tag="201" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lCv-pK-wvt">
+                                        <rect key="frame" x="47" y="335" width="54" height="30"/>
+                                        <state key="normal" title="Camera">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="takePhoto:" destination="KhU-3C-EGc" eventType="touchUpInside" id="Pwe-8K-tFd"/>
                                         </connections>
                                     </button>
                                 </subviews>
