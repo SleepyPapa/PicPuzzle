@@ -132,7 +132,7 @@
         CGFloat centreY = numberOfMovesView.center.y;
         [numberOfMovesView removeFromSuperview];
         NSString* newNumberOfMovesLabel = [NSString stringWithFormat:@"Number of Moves: %ld",(long)_numberOfMoves ];
-        UILabel *newLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,0,228,21)];
+        UILabel *newLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,0,226,21)];
         newLabel.tag=2000;
         newLabel.text = newNumberOfMovesLabel;
         newLabel.center=CGPointMake(centreX,centreY);
@@ -293,15 +293,18 @@
     NSString *nameOfBlank = @"blank";
     if ((allInRightLocation) && (_whereInGrid[(_numberOfTilesWidth*_numberOfTilesHeight)] == nameOfBlank)){
         NSString *path  = [[NSBundle mainBundle] pathForResource:@"SMALL_CROWD_APPLAUSE-Yannick_Lemieux-1268806408" ofType:@"wav"];
-        NSURL *pathURL = [NSURL fileURLWithPath : path];
-        
-        SystemSoundID audioEffect;
-        AudioServicesCreateSystemSoundID((__bridge CFURLRef) pathURL, &audioEffect);
-        AudioServicesPlaySystemSound(audioEffect);
-        // Using GCD, we can use a block to dispose of the audio effect without using a NSTimer or something else to figure out when it'll be finished playing.
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(30 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            AudioServicesDisposeSystemSoundID(audioEffect);
-        });
+        if (path){
+            
+            NSURL *pathURL = [NSURL fileURLWithPath : path];
+            
+            SystemSoundID audioEffect;
+            AudioServicesCreateSystemSoundID((__bridge CFURLRef) pathURL, &audioEffect);
+            AudioServicesPlaySystemSound(audioEffect);
+            // Using GCD, we can use a block to dispose of the audio effect without using a NSTimer or something else to figure out when it'll be finished playing.
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(30 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                AudioServicesDisposeSystemSoundID(audioEffect);
+            });
+        }
         
         NSString *numberOfMoves = [NSString stringWithFormat:@"You won in %ld moves", (long)_numberOfMoves];
         
@@ -325,7 +328,7 @@
 {
     UIImage *mainImage;
     mainImage=_imageToUse;
-
+    
     CGFloat pointsToPixels;
     if (mainImage.size.width>mainImage.size.height)
     {
@@ -336,7 +339,7 @@
         //Portrait
         pointsToPixels = (mainImage.size.height/self.view.frame.size.height);
     }
- 
+    
     NSValue *tempValue = [_storedLocations objectAtIndex:(tileNumber)]; //extracts location of centre of tile
     //find corresponding location in mainImage
     CGPoint cutOrigin = [tempValue CGPointValue];
@@ -344,7 +347,7 @@
     
     cutOrigin.x=((cutOrigin.x-xUnits/2)*pointsToPixels);
     cutOrigin.y=((cutOrigin.y-yUnits/2)*pointsToPixels);
-
+    
     cutExtent.x = xUnits*pointsToPixels;
     cutExtent.y = yUnits*pointsToPixels;
     
@@ -392,7 +395,7 @@
     [_whereInGrid addObject:[NSString stringWithFormat:@"ignore"]]; //fill up the zero location in array with blank data
     
     CGSize insetSize = CGRectInset(self.view.bounds, 10, 80).size;
-
+    
     //adjust insetSize if necessary for dimension of picture being used
     if (!_isPlain && _imageToUse)
     {
@@ -402,7 +405,7 @@
             // adjust for Landscape
             insetSize.height=insetSize.height*(insetSize.width/_imageToUse.size.width);
         }
-
+        
     }
     
     CGFloat xUnits = (insetSize.width/numberInGridWidth);
@@ -454,9 +457,9 @@
             CGPoint centerOffset= [tempValue CGPointValue];
             if (_imageToUse.size.width>=_imageToUse.size.height)
             {
-            //Portrait
+                //Portrait
                 centerOffset.y=centerOffset.y+200;
-//                centerOffset.y=centerOffset.y+((self.view.frame.size.height-(yUnits*_numberOfTilesHeight))/2);
+                //                centerOffset.y=centerOffset.y+((self.view.frame.size.height-(yUnits*_numberOfTilesHeight))/2);
             }
             individualTile.frame = CGRectMake(0,0, xUnits,yUnits);
             individualTile.center = centerOffset;

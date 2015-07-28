@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "10EFB7CD1845174200A0A5C6"
-               BuildableName = "PicPuzzle.app"
-               BlueprintName = "PicPuzzle"
-               ReferencedContainer = "container:PicPuzzle.xcodeproj">
+               BuildableName = "sliderpuzzle.app"
+               BlueprintName = "sliderpuzzle"
+               ReferencedContainer = "container:sliderpuzzle.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "10EFB7EE1845174200A0A5C6"
-               BuildableName = "PicPuzzleTests.xctest"
-               BlueprintName = "PicPuzzleTests"
-               ReferencedContainer = "container:PicPuzzle.xcodeproj">
+               BuildableName = "sliderpuzzleTests.xctest"
+               BlueprintName = "sliderpuzzleTests"
+               ReferencedContainer = "container:sliderpuzzle.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -43,9 +43,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "10EFB7CD1845174200A0A5C6"
-            BuildableName = "PicPuzzle.app"
-            BlueprintName = "PicPuzzle"
-            ReferencedContainer = "container:PicPuzzle.xcodeproj">
+            BuildableName = "sliderpuzzle.app"
+            BlueprintName = "sliderpuzzle"
+            ReferencedContainer = "container:sliderpuzzle.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -63,9 +63,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "10EFB7CD1845174200A0A5C6"
-            BuildableName = "PicPuzzle.app"
-            BlueprintName = "PicPuzzle"
-            ReferencedContainer = "container:PicPuzzle.xcodeproj">
+            BuildableName = "sliderpuzzle.app"
+            BlueprintName = "sliderpuzzle"
+            ReferencedContainer = "container:sliderpuzzle.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -82,9 +82,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "10EFB7CD1845174200A0A5C6"
-            BuildableName = "PicPuzzle.app"
-            BlueprintName = "PicPuzzle"
-            ReferencedContainer = "container:PicPuzzle.xcodeproj">
+            BuildableName = "sliderpuzzle.app"
+            BlueprintName = "sliderpuzzle"
+            ReferencedContainer = "container:sliderpuzzle.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
