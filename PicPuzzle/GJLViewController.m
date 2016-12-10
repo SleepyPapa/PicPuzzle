@@ -324,20 +324,20 @@
 }
 
 
--(UIImage *) getTheTileImage :(NSInteger)tileNumber :(CGFloat)xUnits  :(CGFloat) yUnits
+-(UIImage *) getTheTileImage :(NSInteger)tileNumber :(CGFloat)xUnits  :(CGFloat) yUnits :(UIImage*)inputImage
 {
-    UIImage *mainImage;
-    mainImage=_imageToUse;
+ //   UIImage *inputImage;
+ //   inputImage=_imageToUse;
     
     CGFloat pointsToPixels;
-    if (mainImage.size.width>mainImage.size.height)
+    if (inputImage.size.width>inputImage.size.height)
     {
         //Landscape
-        pointsToPixels = (mainImage.size.width/self.view.frame.size.width);
+        pointsToPixels = (inputImage.size.width/self.view.frame.size.width);
     }
     else{
         //Portrait
-        pointsToPixels = (mainImage.size.height/self.view.frame.size.height);
+        pointsToPixels = (inputImage.size.height/self.view.frame.size.height);
     }
     
     NSValue *tempValue = [_storedLocations objectAtIndex:(tileNumber)]; //extracts location of centre of tile
@@ -356,25 +356,26 @@
     };
     
     CGAffineTransform rectTransform;
-    switch (mainImage.imageOrientation) {
+    switch (inputImage.imageOrientation) {
         case UIImageOrientationLeft:
-            rectTransform = CGAffineTransformTranslate(CGAffineTransformMakeRotation(rad(90)), 0, -mainImage.size.height);
+            rectTransform = CGAffineTransformTranslate(CGAffineTransformMakeRotation(rad(90)), 0, -inputImage.size.height);
             break;
         case UIImageOrientationRight:
-            rectTransform = CGAffineTransformTranslate(CGAffineTransformMakeRotation(rad(-90)), -mainImage.size.width, 0);
+            rectTransform = CGAffineTransformTranslate(CGAffineTransformMakeRotation(rad(-90)), -inputImage.size.width, 0);
             break;
         case UIImageOrientationDown:
-            rectTransform = CGAffineTransformTranslate(CGAffineTransformMakeRotation(rad(-180)), -mainImage.size.width, -mainImage.size.height);
+            rectTransform = CGAffineTransformTranslate(CGAffineTransformMakeRotation(rad(-180)), -inputImage.size.width, -inputImage.size.height);
             break;
         default:
             rectTransform = CGAffineTransformIdentity;
     };
-    rectTransform = CGAffineTransformScale(rectTransform, mainImage.scale, mainImage.scale);
+    rectTransform = CGAffineTransformScale(rectTransform, inputImage.scale, inputImage.scale);
     
     //get mainImage data resized
-    CGImageRef temporaryImageReference = mainImage.CGImage;
+    CGImageRef temporaryImageReference = inputImage.CGImage;
     CGImageRef cutImageReference = CGImageCreateWithImageInRect(temporaryImageReference,CGRectApplyAffineTransform (CGRectMake(cutOrigin.x, cutOrigin.y, cutExtent.x, cutExtent.y),rectTransform));
-    UIImage *cutImage = [UIImage imageWithCGImage:cutImageReference scale:mainImage.scale orientation:mainImage.imageOrientation];
+    UIImage *cutImage = [UIImage imageWithCGImage:cutImageReference scale:inputImage.scale orientation:inputImage.imageOrientation];
+ //   CGImageRelease(temporaryImageReference);
     CGImageRelease(cutImageReference);
     return cutImage;
 }
@@ -437,10 +438,11 @@
         NSLog(@"Problem with loading, using generated file");
     
     if (!_isPlain){
+        
         for (NSInteger i = 1; i < (totalNumberOfTiles+1); i++)
         {
             //Build up grid using images as selected by user
-            UIImage *cutImage = [self getTheTileImage:i :xUnits :yUnits];
+            UIImage *cutImage = [self getTheTileImage:i :xUnits :yUnits :_imageToUse];
             
             GJLTileButton *individualTile = [GJLTileButton button];
             
@@ -449,7 +451,15 @@
             }
             
             [individualTile setBackgroundImage:cutImage forState:UIControlStateNormal];
+ /*           // Create path.
+            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+            NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"Image.png"];
             
+            // Save image.
+            [UIImagePNGRepresentation(cutImage) writeToFile:filePath atomically:YES];
+            UIImage *testimage = [UIImage imageWithContentsOfFile:@"Image.png"];
+            [individualTile setBackgroundImage:testimage forState:UIControlStateNormal];
+*/
             individualTile.titleLabel.font = [UIFont boldSystemFontOfSize:12.0f];
             NSString *tileUIName =[NSString stringWithFormat:@"%ld",(long)(i)];
             [individualTile setTitle:tileUIName forState:UIControlStateNormal];
@@ -475,7 +485,7 @@
             }
             [individualTile addTarget:self action:@selector(pushed:) forControlEvents: UIControlEventTouchUpInside];
             [self.view addSubview:individualTile];
-        }
+       }
     }
     else {
         for (NSInteger i = 1; i < (totalNumberOfTiles+1); i++)

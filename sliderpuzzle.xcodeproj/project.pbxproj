@@ -21,7 +21,8 @@
 		108877371B38D5AC007B77A7 /* redlarge.png in Resources */ = {isa = PBXBuildFile; fileRef = 108877361B38D5AC007B77A7 /* redlarge.png */; };
 		1088773B1B38D6A2007B77A7 /* blacklarge.png in Resources */ = {isa = PBXBuildFile; fileRef = 1088773A1B38D6A2007B77A7 /* blacklarge.png */; };
 		109A44991B6841FE00530E92 /* SMALL_CROWD_APPLAUSE-Yannick_Lemieux-1268806408.wav in Resources */ = {isa = PBXBuildFile; fileRef = 109A44981B6841FE00530E92 /* SMALL_CROWD_APPLAUSE-Yannick_Lemieux-1268806408.wav */; };
-		10E9E0941B2BA4B600E09E6E /* RYAN.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 10E9E0931B2BA4B600E09E6E /* RYAN.JPG */; };
+		10E9B0CF1DFBA48300C9A924 /* RYAN.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 10E9B0CE1DFBA48300C9A924 /* RYAN.JPG */; };
+		10E9E0941B2BA4B600E09E6E /* xRYAN.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 10E9E0931B2BA4B600E09E6E /* xRYAN.JPG */; };
 		10E9E0961B30DF7400E09E6E /* tiles_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 10E9E0951B30DF7400E09E6E /* tiles_default.png */; };
 		10EFB7D21845174200A0A5C6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10EFB7D11845174200A0A5C6 /* Foundation.framework */; };
 		10EFB7D41845174200A0A5C6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10EFB7D31845174200A0A5C6 /* CoreGraphics.framework */; };
@@ -66,7 +67,8 @@
 		108877361B38D5AC007B77A7 /* redlarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redlarge.png; sourceTree = "<group>"; };
 		1088773A1B38D6A2007B77A7 /* blacklarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blacklarge.png; sourceTree = "<group>"; };
 		109A44981B6841FE00530E92 /* SMALL_CROWD_APPLAUSE-Yannick_Lemieux-1268806408.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "SMALL_CROWD_APPLAUSE-Yannick_Lemieux-1268806408.wav"; sourceTree = "<group>"; };
-		10E9E0931B2BA4B600E09E6E /* RYAN.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = RYAN.JPG; sourceTree = "<group>"; };
+		10E9B0CE1DFBA48300C9A924 /* RYAN.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = RYAN.JPG; path = ../../../Pictures/RYAN.JPG; sourceTree = "<group>"; };
+		10E9E0931B2BA4B600E09E6E /* xRYAN.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = xRYAN.JPG; sourceTree = "<group>"; };
 		10E9E0951B30DF7400E09E6E /* tiles_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tiles_default.png; sourceTree = "<group>"; };
 		10EFB7CE1845174200A0A5C6 /* sliderpuzzle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sliderpuzzle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10EFB7D11845174200A0A5C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -165,7 +167,8 @@
 			isa = PBXGroup;
 			children = (
 				109A44981B6841FE00530E92 /* SMALL_CROWD_APPLAUSE-Yannick_Lemieux-1268806408.wav */,
-				10E9E0931B2BA4B600E09E6E /* RYAN.JPG */,
+				10E9E0931B2BA4B600E09E6E /* xRYAN.JPG */,
+				10E9B0CE1DFBA48300C9A924 /* RYAN.JPG */,
 				10E9E0951B30DF7400E09E6E /* tiles_default.png */,
 				1088772A1B38CFE1007B77A7 /* 1136.png */,
 				10849927185A3FEE00831D11 /* black.png */,
@@ -249,7 +252,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = GJL;
-				LastUpgradeCheck = 0630;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "Gregory Lavery";
 				TargetAttributes = {
 					10EFB7CD1845174200A0A5C6 = {
@@ -285,6 +288,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				108877351B38D281007B77A7 /* icon80.png in Resources */,
+				10E9B0CF1DFBA48300C9A924 /* RYAN.JPG in Resources */,
 				1088772B1B38CFE1007B77A7 /* 1136.png in Resources */,
 				108877301B38D1B7007B77A7 /* icon152.png in Resources */,
 				108877341B38D281007B77A7 /* icon58.png in Resources */,
@@ -292,7 +296,7 @@
 				10E9E0961B30DF7400E09E6E /* tiles_default.png in Resources */,
 				10EFB7EA1845174200A0A5C6 /* Images.xcassets in Resources */,
 				10EFB7DC1845174200A0A5C6 /* InfoPlist.strings in Resources */,
-				10E9E0941B2BA4B600E09E6E /* RYAN.JPG in Resources */,
+				10E9E0941B2BA4B600E09E6E /* xRYAN.JPG in Resources */,
 				1088773B1B38D6A2007B77A7 /* blacklarge.png in Resources */,
 				109A44991B6841FE00530E92 /* SMALL_CROWD_APPLAUSE-Yannick_Lemieux-1268806408.wav in Resources */,
 				108877371B38D5AC007B77A7 /* redlarge.png in Resources */,
@@ -386,13 +390,19 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -405,7 +415,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -424,20 +434,25 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -453,7 +468,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PicPuzzle/sliderpuzzle-Prefix.pch";
 				INFOPLIST_FILE = "PicPuzzle/sliderpuzzle-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gregorylavery.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = sliderpuzzle;
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -470,7 +486,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PicPuzzle/sliderpuzzle-Prefix.pch";
 				INFOPLIST_FILE = "PicPuzzle/sliderpuzzle-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gregorylavery.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = sliderpuzzle;
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -493,6 +510,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "PicPuzzleTests/sliderpuzzleTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.example.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = sliderpuzzleTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -511,6 +529,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PicPuzzle/PicPuzzle-Prefix.pch";
 				INFOPLIST_FILE = "PicPuzzleTests/sliderpuzzleTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.example.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = sliderpuzzleTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
